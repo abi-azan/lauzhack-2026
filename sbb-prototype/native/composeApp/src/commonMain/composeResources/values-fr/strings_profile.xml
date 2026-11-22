@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notif_saved_journeys">Voyages enregistrés</string>
+    <string name="notif_disruption_title">Informations sur les perturbations</string>
+    <string name="notif_disruption_body">Vous recevez des notifications en cas de retards, de changements de voie, de pannes et de perturbations sur vos voyages.</string>
+    <string name="notif_transfer_title">Informations sur les perturbations et les correspondances</string>
+    <string name="notif_transfer_body">En plus des informations sur les perturbations, vous recevez des rappels lorsqu’il est temps de monter, de changer de train et de descendre.</string>
+    <string name="notif_commuting_body">Vous recevez des notifications en cas de retards, de changements de voie, de suppressions et de perturbations sur votre trajet pendulaire.</string>
+    <string name="notif_train_section">Dans le train</string>
+    <string name="notif_train_group">Infos en direct sur votre train</string>
+    <string name="notif_detect_title">Détecter mon train automatiquement (Bluetooth)</string>
+    <string name="notif_detect_body">Uniquement dans le train. Les CFF ne vous suivent pas ; votre téléphone reconnaît le train.</string>
+    <string name="notif_detect_now">Actuellement dans le %1$s · voiture %2$s</string>
+    <string name="notif_detect_no_perm">L’autorisation Bluetooth est désactivée. Touchez pour l’accorder.</string>
+    <string name="notif_detect_denied">Sans Bluetooth, nous ne pouvons pas reconnaître votre train. Vous pouvez toujours scanner le code QR dans votre voiture.</string>
+    <string name="notif_detect_sheet_title">Détecter mon train</string>
+    <string name="notif_detect_lead">Si quelque chose se passe sur votre train, CFF Mobile vous prévient aussitôt, même si votre téléphone est dans votre poche.</string>
+    <string name="notif_reason_bt_title">Bluetooth</string>
+    <string name="notif_reason_bt_body">Votre téléphone reconnaît le train dans lequel vous montez grâce à son signal. Rien à toucher, rien à scanner.</string>
+    <string name="notif_reason_notif_title">Notifications</string>
+    <string name="notif_reason_notif_body">Pour vous joindre dès qu’il y a du nouveau sur votre train.</string>
+    <string name="notif_turn_on">Activer</string>
+    <string name="notif_not_now">Pas maintenant</string>
+    <string name="profile_help_empty">L’aide et le contact ne font pas partie de ce prototype. Dans Mobile CFF, vous trouveriez ici la FAQ et le Contact Center CFF.</string>
+    <string name="profile_wallet_empty">Les moyens de paiement et bons enregistrés ne font pas partie de ce prototype.</string>
+    <string name="profile_offers_empty">Les paramètres des offres &amp; publicité ne font pas partie de ce prototype.</string>
+    <string name="profile_ticket_purchase_empty">Les paramètres pour l’achat de billets ne font pas partie de ce prototype.</string>
+</resources>

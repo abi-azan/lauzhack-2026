@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Rail Status Works</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: one readable column, sections separated by rules; diagrams get full column width and scroll sideways on phones. */
+:root {
+  --bg: #fbfaf9; --fg: #1b1a19; --muted: #6b6762; --line: #e3e0dc; --card: #ffffff;
+  --accent: #d50f0f; --ok: #12784a; --warn: #a65a00;
+  --display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #161514; --fg: #eeebe7; --muted: #a39e98; --line: #34312e; --card: #1f1d1b;
+  --accent: #ff5a4f; --ok: #4cc38a; --warn: #f0a24b; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #161514; --fg: #eeebe7; --muted: #a39e98; --line: #34312e; --card: #1f1d1b;
+  --accent: #ff5a4f; --ok: #4cc38a; --warn: #f0a24b; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font: 16px/1.6 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+main { max-width: 780px; margin: 0 auto; padding-block: 48px 72px; display: grid; gap: 40px; }
+h1, h2 { font-family: var(--display); text-wrap: balance; margin: 0; }
+h1 { font-size: 2.4rem; line-height: 1.1; }
+h1 span { color: var(--accent); }
+h2 { font-size: 1.4rem; margin-bottom: 10px; }
+p { margin: 0 0 12px; max-width: 65ch; }
+.lead { font-size: 1.15rem; color: var(--muted); }
+section { border-top: 1px solid var(--line); padding-top: 28px; min-width: 0; }
+.nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
+.num { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.num b { display: block; font: 700 1.8rem/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.num.us b { color: var(--ok); }
+.num small { color: var(--muted); font-size: .85rem; }
+.diagram { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin: 14px 0; }
+pre.mermaid { margin: 0; background: transparent; }
+ol, ul { margin: 0 0 12px; padding-left: 1.3em; max-width: 65ch; }
+li { margin-bottom: 6px; }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; }
+code { font-size: .88em; background: var(--line); padding: 1px 5px; border-radius: 4px; }
+.done { color: var(--ok); font-weight: 600; white-space: nowrap; }
+.todo { color: var(--warn); font-weight: 600; white-space: nowrap; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.two > div { min-width: 0; }
+h3 { font: 600 1rem var(--body); margin: 0 0 6px; }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "default" });</script>
+</head>
+<body>
+<main>
+  <header>
+    <h1>How Rail Status <span>works</span></h1>
+    <p class="lead">A status page for trains. When something breaks on a line, every passenger on an affected train hears about it within a minute, keeps hearing until it's over, and can ask questions.</p>
+  </header>
+
+  <section>
+    <h2>The problem we solve</h2>
+    <p>On 17 Sep 2026 at 17:22, an overhead line caught fire between Renens VD and Allaman, cutting the Lausanne – Genève line. The control centre knew within minutes and wrote about it constantly in its internal ticker. Passengers stuck on the trains heard almost nothing.</p>
+    <div class="nums">
+      <div class="num"><b>+74 min</b><small>14 buses ordered (internal)</small></div>
+      <div class="num"><b>+95 min</b><small>first public travel advice</small></div>
+      <div class="num"><b>+160 min</b><small>public notice about the buses</small></div>
+      <div class="num us"><b>&lt; 60 s</b><small>first message with Rail Status</small></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The big picture</h2>
+    <p>Four boxes matter. The <b>control centre</b> produces events. The <b>server</b> turns them into incidents. An <b>operator</b> decides what passengers are told. <b>Passengers' phones</b> receive it.</p>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  CC["Control centre ticker<br/>(in the demo: a replay of 17 Sep)"] -->|events| Q[("Message queue<br/>Redis")]
+  Q --> S["Server<br/>(Kotlin)"]
+  S <-->|"incidents, publish"| A["Operator dashboard<br/>(browser or desktop)"]
+  S -->|"updates, next move"| P["Passenger app<br/>(Android + web)"]
+  P -->|questions| S
+  S <-->|"draft text, classify questions"| AI(("AI model<br/>OpenRouter"))
+  S -.->|"routes around the closure (optional)"| OJP(("SBB journey planner<br/>OJP"))
+    </pre></div>
+    <p>Everything is Kotlin. The server, the dashboard and the passenger app share the same code for the data and the rules, so they can't drift apart.</p>
+  </section>
+
+  <section>
+    <h2>What happens during an incident</h2>
+    <p>Follow one passenger, Ana, on the IR 90 from Genève to Lausanne.</p>
+    <div class="diagram"><pre class="mermaid">
+sequenceDiagram
+  autonumber
+  participant CC as Control centre
+  participant S as Server
+  participant Op as Operator
+  participant Ana as Ana's phone
+  Ana->>S: phone detects the train beacon, Ana is "on IR 90"
+  CC->>S: "power failure Allaman – Renens"
+  S->>S: which trains run there? opens an incident
+  S->>Op: new incident, 3 trains, 412 passengers, not told yet
+  alt operator doesn't react in time (15 s in the demo, 60 s by default)
+    S->>Ana: safety net: "There is a disruption. Nothing more is known yet. Further information at approximately 17:45"
+  end
+  CC->>S: more internal messages ("buses ordered", "firefighters on site")
+  Op->>S: "Draft from the ticker (AI)"
+  S-->>Op: the update, drafted from the ticker in DE / FR / IT / EN
+  Op->>S: checks it, then Publish
+  S->>Ana: official update + our suggestion ("stay on board / take the bus at Allaman")
+  Ana->>S: "Will I make my connection in Lausanne?"
+  S-->>Ana: answer from published facts only
+  S->>Op: "Connections in Lausanne: 14 people asking"
+  Op->>S: next update answers it for everyone, then Resolve
+  S->>Ana: "Service resumed, arrival 18:20 (+29 min)"
+    </pre></div>
+  </section>
+
+  <section>
+    <h2>The life of an incident</h2>
+    <p>Like any status page, an incident moves through clear stages. Passengers never see the first one: it only exists so the operator knows something happened.</p>
+    <div class="diagram"><pre class="mermaid">
+stateDiagram-v2
+  direction LR
+  [*] --> NotPublished: ticker event
+  NotPublished --> Investigating: operator publishes,<br/>or the safety net fires
+  Investigating --> Identified: cause known
+  Identified --> Monitoring: detour or buses running
+  Investigating --> Monitoring
+  Monitoring --> Resolved
+  Identified --> Resolved
+  Resolved --> [*]
+    </pre></div>
+  </section>
+
+  <section>
+    <h2>What the passenger sees</h2>
+    <p>The app looks like SBB Mobile. We only change the places where SBB already talks about disruptions, so it feels like their app doing its job better.</p>
+    <div class="two">
+      <div>
+        <h3>From the SBB control centre</h3>
+        <p>What the operator published: what happened, the official alternatives, and when the next update comes. This is the official word.</p>
+      </div>
+      <div>
+        <h3>Our suggestion</h3>
+        <p>What we work out from that plus the timetable: stay, wait, or change to a bus, and by when to decide. It's shown in grey and labelled as an estimate, never mixed with the official part.</p>
+      </div>
+    </div>
+    <p>There's one notification per incident, updated in place, and a chat that only answers from what was published. Its questions go back to the operator, grouped.</p>
+    <p>In the app today: check-in (the train's Bluetooth beacon after a one-time opt-in, or a QR code), live notifications that keep working with the screen off on Android, the incident sheet with the official update and our suggestion, and the chat.</p>
+  </section>
+
+  <section>
+    <h2>The pieces</h2>
+    <div class="tablewrap"><table>
+      <tr><th>Piece</th><th>What it does</th><th>Where</th><th>State</th></tr>
+      <tr><td>Shared code</td><td>Data model, which trains a line affects, message templates, chat rules, next move</td><td><code>kmp/shared</code></td><td class="done">done</td></tr>
+      <tr><td>Server</td><td>Reads the queue, opens incidents, safety net, AI drafts, sends updates, answers the chat</td><td><code>kmp/server</code></td><td class="done">done</td></tr>
+      <tr><td>Operator dashboard</td><td>Incident list, timeline, publish and resolve, passenger questions</td><td><code>kmp/admin</code></td><td class="done">works</td></tr>
+      <tr><td>Passenger app</td><td>SBB look-alike: check-in, live notifications, incident sheet, next move, chat</td><td><code>native/</code></td><td class="done">works</td></tr>
+      <tr><td>Replayer</td><td>Plays the real 17 Sep data into the queue, like the control centre would</td><td><code>kmp/replayer</code></td><td class="done">done</td></tr>
+      <tr><td>Demo command</td><td>Starts everything with a public address, plays the incident in 4 beats, tests all 9 steps</td><td><code>./demo</code></td><td class="done">done</td></tr>
+      <tr><td>Self-healing services</td><td>Restart on crash, survive a reboot, watchdog for the public address</td><td><code>kmp/ops/</code></td><td class="done">done</td></tr>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Real and staged in the demo</h2>
+    <ul>
+      <li><b>Real:</b> SBB's own data from 17 Sep (the internal ticker, event log and public messages), the timings in it, the AI drafts and chat answers, and the notifications on the phone.</li>
+      <li><b>Staged:</b> the trains (four demo trains on the line, timed to "now"), the train's Bluetooth beacon (a stand-in; the QR code is the fallback), and the pace (the evening plays in 4 beats, one per keypress).</li>
+    </ul>
+    <p>An automatic test clicks through all nine demo steps with a fake phone and a fake operator. It passes 9 of 9 against the live server.</p>
+  </section>
+
+  <section>
+    <h2>Safety nets</h2>
+    <ul>
+      <li><b>No silence.</b> If no operator publishes within 15 seconds in the demo (60 by default), the server tells passengers itself: there is a disruption, nothing more is known yet, and when the next update comes.</li>
+      <li><b>The AI only drafts.</b> "Draft from the ticker (AI)" turns the internal ticker into an update in four languages. Staff names and phone numbers are removed before the text reaches the model. The operator checks every line and publishes. Without the AI, templates do the same job.</li>
+      <li><b>The chat sticks to what was published.</b> Fixed rules answer most questions from the published updates. When they can't, an AI answer is used only if it passes a check against the published facts and contains no personal data; otherwise the passenger gets a fixed, safe reply.</li>
+      <li><b>Self-healing demo.</b> The server and tunnel run as services that restart on a crash and survive a reboot. A watchdog checks the public address every minute.</li>
+      <li><b>Admin key.</b> The dashboard and admin routes can require a key. It's off by default for the demo.</li>
+      <li><b>Real routes, optional.</b> With a key for SBB's journey planner (OJP), the next move uses real trips around any closure. Without it, a hand-checked set of routes around Allaman – Renens VD is used.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Where we are</h2>
+    <p>The whole flow works end to end: check-in, the safety net, the AI draft, the update with the next move on the phone, the chat and its questions on the dashboard, and the resolution. The open tasks are in <code>docs/ARCHITECTURE.md</code>, and the demo script in <code>docs/DEMO.md</code>.</p>
+  </section>
+</main>
+
+</body>
+</html>

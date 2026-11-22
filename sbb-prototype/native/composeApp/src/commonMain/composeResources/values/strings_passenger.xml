@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Passenger side (check-in, chat, heads-up): owned by the T1 screens in screens/easyride. -->
+<resources>
+    <string name="p_stage_investigating">Being clarified</string>
+    <string name="p_stage_identified">Cause known</string>
+    <string name="p_stage_monitoring">Under observation</string>
+    <string name="p_stage_resolved">Resolved</string>
+    <string name="p_live_on_body">We recognise your train as soon as you board.</string>
+    <string name="p_live_paused">Paused for this journey.</string>
+    <string name="p_qr_hint">No signal? Scan the QR code in your car.</string>
+    <string name="p_searching">Looking for your train …</string>
+    <string name="p_look_again">Look for my train</string>
+    <string name="p_saved_title">Are you on %1$s?</string>
+    <string name="p_saved_body">From your saved trip to %1$s.</string>
+    <string name="p_get_updates">Get live updates</string>
+    <string name="p_qr_found">Car %1$s</string>
+    <string name="p_connecting">Connecting …</string>
+    <string name="p_to">to %1$s</string>
+    <string name="p_not_on_train">Not on this train?</string>
+    <string name="p_er_dep">Dep:</string>
+    <string name="p_er_change">change</string>
+    <string name="p_er_class2">2nd class</string>
+    <string name="p_er_class1">1st class</string>
+    <string name="p_er_travel_time">Travel Time</string>
+    <string name="p_er_start">Start</string>
+    <string name="p_er_stop">Stop</string>
+    <string name="p_er_swipe_start">Swipe right to start</string>
+    <string name="p_er_swipe_stop">Swipe left to stop</string>
+    <string name="p_on">On</string>
+    <string name="p_car_inline">car %1$s</string>
+    <string name="p_src_beacon">Detected automatically</string>
+    <string name="p_src_qr">Checked in</string>
+    <string name="p_src_saved">From your saved trip</string>
+    <string name="p_chip_on_board">On board</string>
+    <string name="p_chip_detected">detected</string>
+    <string name="p_auto_title">Detect my train automatically</string>
+    <string name="p_auto_off">Off. Turn it on in Profile › Notifications.</string>
+    <string name="p_auto_no_perm">Bluetooth permission is off.</string>
+    <string name="p_detected_car">Car %1$s, detected automatically</string>
+    <string name="p_chip_on_board_car">On board in car %1$s</string>
+</resources>

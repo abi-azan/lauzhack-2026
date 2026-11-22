@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Profile tab and its sub-pages (screens/profile). -->
+<resources>
+    <string name="notif_saved_journeys">Saved journeys</string>
+    <string name="notif_disruption_title">Service disruption information</string>
+    <string name="notif_disruption_body">You will receive notifications in the event of delays, platform changes, breakdowns and service disruptions for your journeys.</string>
+    <string name="notif_transfer_title">Service disruption and transfer information</string>
+    <string name="notif_transfer_body">Besides service disruption information, you will receive reminders when it is time to board, transfer and disembark.</string>
+    <string name="notif_commuting_body">You will receive notifications in the event of delays, platform changes, cancellations and service disruptions for your commuter route.</string>
+    <string name="notif_train_section">On the train</string>
+    <string name="notif_train_group">Live updates on your train</string>
+    <string name="notif_detect_title">Detect my train automatically (Bluetooth)</string>
+    <string name="notif_detect_body">Only on the train. SBB doesn’t track you; your phone recognises the train.</string>
+    <string name="notif_detect_now">Now on %1$s · car %2$s</string>
+    <string name="notif_detect_no_perm">Bluetooth permission is off. Tap to allow it.</string>
+    <string name="notif_detect_denied">Without Bluetooth, we can’t recognise your train. You can still scan the QR code in your car.</string>
+    <string name="notif_detect_sheet_title">Detect my train</string>
+    <string name="notif_detect_lead">When something happens on your train, SBB Mobile lets you know at once, even with your phone in your pocket.</string>
+    <string name="notif_reason_bt_title">Bluetooth</string>
+    <string name="notif_reason_bt_body">Your phone recognises the train you board by its signal. Nothing to tap, nothing to scan.</string>
+    <string name="notif_reason_notif_title">Notifications</string>
+    <string name="notif_reason_notif_body">So we can reach you as soon as there’s news about your train.</string>
+    <string name="notif_turn_on">Turn on</string>
+    <string name="notif_not_now">Not now</string>
+    <string name="profile_help_empty">Help and contact aren’t part of this prototype. In SBB Mobile you’d find the FAQ and the SBB Contact Center here.</string>
+    <string name="profile_wallet_empty">Saved payment methods and vouchers aren’t part of this prototype.</string>
+    <string name="profile_offers_empty">Offers &amp; advertising settings aren’t part of this prototype.</string>
+    <string name="profile_ticket_purchase_empty">Ticket purchase settings aren’t part of this prototype.</string>
+</resources>

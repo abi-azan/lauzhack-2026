@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tickets_login_title">Effettuate il login e approfittatene.</string>
+    <string name="tickets_login_body">Il vostro SwissPass può restare nel portafoglio: mostrate il vostro abbonamento con un solo clic. Acquistate i biglietti rapidamente con soli due clic: senza inserire i vostri dati personali o il mezzo di pagamento. Acquistate comodamente i biglietti su fattura.</string>
+    <string name="tickets_login_button">Accedere con il login SwissPass</string>
+    <string name="tickets_none_valid">Al momento non avete un biglietto valido.</string>
+    <string name="tickets_none_expired">Non avete biglietti scaduti.</string>
+    <string name="tickets_half_fare">Abbonamento metà-prezzo</string>
+    <string name="tickets_valid_until">Valido fino al %1$s</string>
+    <string name="tickets_show_swisspass">Mostrare lo SwissPass</string>
+</resources>

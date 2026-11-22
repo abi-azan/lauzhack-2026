@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tickets & Travelcards tab (screens/tickets). -->
+<resources>
+    <string name="tickets_login_title">Log in and benefit.</string>
+    <string name="tickets_login_body">Your SwissPass can stay in your wallet: show your travelcard with just one tap. Buy tickets quickly with just two taps: no need to enter your personal details or payment method. Buy tickets on account with ease.</string>
+    <string name="tickets_login_button">Log in with your SwissPass login</string>
+    <string name="tickets_none_valid">You do not currently have a valid ticket.</string>
+    <string name="tickets_none_expired">You have no expired tickets.</string>
+    <string name="tickets_half_fare">Half Fare travelcard</string>
+    <string name="tickets_valid_until">Valid until %1$s</string>
+    <string name="tickets_show_swisspass">Show SwissPass</string>
+</resources>

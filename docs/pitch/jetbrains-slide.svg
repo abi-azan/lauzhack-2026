@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#767676"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1600" height="8" fill="#EB0000"/>
+
+  <!-- header -->
+  <text x="60" y="66" font-size="18" font-weight="700" fill="#EB0000" letter-spacing="2">JETBRAINS · KOTLIN MULTIPLATFORM</text>
+  <text x="60" y="124" font-size="50" font-weight="700" fill="#141414">One Kotlin codebase. Five binaries.</text>
+  <text x="60" y="168" font-size="24" fill="#5A5A5A">kmp/shared commonMain compiles into the server, both dashboards and both passenger apps.</text>
+
+  <!-- ===== diagram: shared → 5 binaries ===== -->
+  <rect x="60" y="215" width="380" height="376" rx="14" fill="#141414"/>
+  <text x="88" y="262" font-size="30" font-weight="700" fill="#FFFFFF">kmp/shared</text>
+  <text x="88" y="292" font-size="19" fill="#BDBDBD">commonMain · 1,948 lines</text>
+  <line x1="88" y1="312" x2="412" y2="312" stroke="#3C3C3C" stroke-width="2"/>
+  <rect x="88" y="336" width="10" height="10" fill="#EB0000"/>
+  <text x="112" y="350" font-size="23" fill="#FFFFFF">Model and API types</text>
+  <rect x="88" y="380" width="10" height="10" fill="#EB0000"/>
+  <text x="112" y="394" font-size="23" fill="#FFFFFF">Train matching</text>
+  <rect x="88" y="424" width="10" height="10" fill="#EB0000"/>
+  <text x="112" y="438" font-size="23" fill="#FFFFFF">Template rendering</text>
+  <rect x="88" y="468" width="10" height="10" fill="#EB0000"/>
+  <text x="112" y="482" font-size="23" fill="#FFFFFF">Chat rules engine</text>
+  <text x="112" y="508" font-size="18" fill="#BDBDBD">on the server, and on the phone offline</text>
+  <rect x="88" y="538" width="10" height="10" fill="#EB0000"/>
+  <text x="112" y="552" font-size="23" fill="#FFFFFF">nextMove()</text>
+
+  <!-- arrows -->
+  <g stroke="#767676" stroke-width="2.5" fill="none" marker-end="url(#arrow)">
+    <path d="M440,403 C485,403 480,247 524,247"/>
+    <path d="M440,403 C485,403 480,325 524,325"/>
+    <path d="M440,403 L524,403"/>
+    <path d="M440,403 C485,403 480,481 524,481"/>
+    <path d="M440,403 C485,403 480,559 524,559"/>
+  </g>
+
+  <!-- binaries -->
+  <g font-size="22">
+    <rect x="530" y="215" width="380" height="64" rx="10" fill="#FFFFFF" stroke="#141414" stroke-width="2"/>
+    <text x="552" y="255" font-weight="700" fill="#141414">Server</text>
+    <text x="888" y="255" font-size="20" text-anchor="end" fill="#5A5A5A">JVM · Ktor</text>
+
+    <rect x="530" y="293" width="380" height="64" rx="10" fill="#FFFFFF" stroke="#141414" stroke-width="2"/>
+    <text x="552" y="333" font-weight="700" fill="#141414">Admin dashboard</text>
+    <text x="888" y="333" font-size="20" text-anchor="end" fill="#5A5A5A">Desktop · JVM</text>
+
+    <rect x="530" y="371" width="380" height="64" rx="10" fill="#FFFFFF" stroke="#141414" stroke-width="2"/>
+    <text x="552" y="411" font-weight="700" fill="#141414">Admin dashboard</text>
+    <text x="888" y="411" font-size="20" text-anchor="end" fill="#5A5A5A">Web · wasmJs</text>
+
+    <rect x="530" y="449" width="380" height="64" rx="10" fill="#FFFFFF" stroke="#EB0000" stroke-width="2.5"/>
+    <text x="552" y="489" font-weight="700" fill="#141414">Passenger app</text>
+    <text x="888" y="489" font-size="20" text-anchor="end" fill="#5A5A5A">Android</text>
+
+    <rect x="530" y="527" width="380" height="64" rx="10" fill="#FFFFFF" stroke="#EB0000" stroke-width="2.5"/>
+    <text x="552" y="567" font-weight="700" fill="#141414">Passenger app</text>
+    <text x="888" y="567" font-size="20" text-anchor="end" fill="#5A5A5A">Web · wasmJs</text>
+  </g>
+
+  <text x="60" y="628" font-size="20" fill="#141414"><tspan font-weight="700">Same files, no copy:</tspan> native/ compiles kmp/shared's folder in (kotlin.srcDir).</text>
+
+  <!-- ===== measured lines ===== -->
+  <text x="970" y="232" font-size="17" font-weight="700" fill="#767676" letter-spacing="1.5">LINES OF KOTLIN, MEASURED</text>
+
+  <text x="970" y="282" font-size="24" font-weight="700" fill="#141414">Passenger app <tspan font-size="18" font-weight="400" fill="#767676">native/composeApp</tspan></text>
+  <text x="1540" y="284" font-size="40" font-weight="700" fill="#EB0000" text-anchor="end">94.0%</text>
+  <rect x="970" y="298" width="531.5" height="30" fill="#EB0000"/>
+  <rect x="1501.5" y="298" width="31.5" height="30" fill="#141414"/>
+  <rect x="1533" y="298" width="7" height="30" fill="#A3A3A3"/>
+  <text x="970" y="358" font-size="20" fill="#5A5A5A"><tspan fill="#EB0000" font-weight="700">14,698 common</tspan> · <tspan fill="#141414" font-weight="700">872 Android</tspan> · <tspan font-weight="700">193 web</tspan></text>
+
+  <text x="970" y="412" font-size="24" font-weight="700" fill="#141414">Admin dashboard <tspan font-size="18" font-weight="400" fill="#767676">kmp/admin</tspan></text>
+  <text x="1540" y="414" font-size="40" font-weight="700" fill="#EB0000" text-anchor="end">98.5%</text>
+  <rect x="970" y="428" width="551.4" height="30" fill="#EB0000"/>
+  <rect x="1521.4" y="428" width="6.9" height="30" fill="#141414"/>
+  <rect x="1528.3" y="428" width="11.7" height="30" fill="#A3A3A3"/>
+  <text x="970" y="488" font-size="20" fill="#5A5A5A"><tspan fill="#EB0000" font-weight="700">1,603 common</tspan> · <tspan fill="#141414" font-weight="700">20 desktop</tspan> · <tspan font-weight="700">34 web</tspan></text>
+
+  <text x="970" y="542" font-size="24" font-weight="700" fill="#141414">Shared logic <tspan font-size="18" font-weight="400" fill="#767676">kmp/shared</tspan></text>
+  <text x="1540" y="544" font-size="40" font-weight="700" fill="#EB0000" text-anchor="end">100%</text>
+  <rect x="970" y="558" width="570" height="30" fill="#EB0000"/>
+  <text x="970" y="618" font-size="20" fill="#5A5A5A"><tspan fill="#EB0000" font-weight="700">1,948 common</tspan> · no platform code</text>
+
+  <!-- ===== platform-specific ===== -->
+  <rect x="60" y="660" width="850" height="196" rx="14" fill="#F6F6F6"/>
+  <text x="88" y="696" font-size="17" font-weight="700" fill="#767676" letter-spacing="1.5">PLATFORM-SPECIFIC, AND WHY</text>
+  <text x="88" y="734" font-size="22" font-weight="700" fill="#141414">Android</text>
+  <g font-size="20" fill="#141414">
+    <text x="88" y="766">Bluetooth LE scan: check in by beacon</text>
+    <text x="88" y="796">Foreground service: buzz when locked</text>
+    <text x="88" y="826">System notifications, deep-link intents</text>
+  </g>
+  <text x="510" y="734" font-size="22" font-weight="700" fill="#141414">Web</text>
+  <g font-size="20" fill="#141414">
+    <text x="510" y="766">Browser Notification API</text>
+    <text x="510" y="796">Hash router: QR and notification links</text>
+    <text x="510" y="826">localStorage: survives a reload</text>
+  </g>
+
+  <!-- ===== also ===== -->
+  <g font-size="21" fill="#141414">
+    <rect x="970" y="682" width="10" height="10" fill="#EB0000"/>
+    <text x="994" y="696">Compose Multiplatform for every UI</text>
+    <rect x="970" y="718" width="10" height="10" fill="#EB0000"/>
+    <text x="994" y="732">Kotlin backend: Ktor on the JVM</text>
+    <rect x="970" y="754" width="10" height="10" fill="#EB0000"/>
+    <text x="994" y="768">4 languages (EN, DE, FR, IT), dark/light mode</text>
+    <rect x="970" y="790" width="10" height="10" fill="#EB0000"/>
+    <text x="994" y="804"><tspan font-weight="700">iOS:</tspan> no Xcode on our Linux laptops. It's one</text>
+    <text x="994" y="832">more target plus 3 expect/actual functions.</text>
+  </g>
+
+  <text x="60" y="884" font-size="15" fill="#767676">Measured 22 Nov 2026 at 7db346a with find &lt;source set&gt; -name '*.kt' | xargs wc -l. The server (2,635 lines, JVM only) also uses kmp/shared.</text>
+</svg>

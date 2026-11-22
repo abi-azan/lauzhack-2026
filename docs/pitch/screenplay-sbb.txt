@@ -1,0 +1,169 @@
+SCREENPLAY: SBB PITCH (ABOUT 5–6 MINUTES)
+=========================================
+
+A live demo with no slides and no hook. Three judges each hold one of our phones, each one a different passenger on the evening of 17 September. One operator sends SBB's real disruption in four beats from the dashboard's Live demo bar, and the presenter walks the judges through what their phone does at each beat.
+
+Setup, the adb lines and the fallbacks are in sbb-demo-notes.md. This file is the run of the show, line by line. The screens are quoted as a real phone showed them in rehearsal.
+
+CAST
+----
+
+- PRESENTER: Albert / standing next to the judges
+- OPERATOR: Emil / the dashboard <A>/admin/ on his laptop, on the projector
+- PHONE HELPER: Matej (@cappig) / beside the judges; helps a stuck judge, re-checks a phone in
+- BACKUP: Martin / the rehearsal recording; smoke.mjs <A> on standby
+- JUDGE 1: phone 1 / on IR 90 1734 to Lausanne, Supersaver ticket
+- JUDGE 2: phone 2 / on IR 90 1734 going on to Sion, single ticket
+- JUDGE 3: phone 3 / on the platform in Lausanne, waiting for IR 90 1734 to Sion, GA travelcard
+
+BEFORE THE JUDGES ARRIVE
+------------------------
+
+- Flash each phone with one command (cappig, f9ca0e1), from sbb-prototype/native after ./gradlew :composeApp:assembleDebug: scripts/flash-demo-phone.sh <serial> supersaver (phone 1), ticket (phone 2), ga (phone 3). It installs, clears data, grants every permission, keeps the screen on over USB, checks the phone in and warns if Do Not Disturb is on.
+- The pre-stage checklist in sbb-demo-notes.md:
+  - ./demo koog off: this pitch uses the single-call draft;
+  - ./demo test --reset --force at 9/9;
+  - Start over in the Live demo bar;
+  - phone 3's follow line.
+- The dashboard counts phones 1 and 2 on IR 90 1734.
+- The phones: unmuted, Do Not Disturb off, screen timeout 10 minutes. Phones 1 and 2 on Trips, phone 3 on Plan. All three locked, face up.
+- The dashboard on Incidents, in the light theme.
+
+------------------------------------------------------------
+
+SCENE 1: OPENING (0:00 – 0:30)
+------------------------------
+
+PRESENTER:
+    "We took an already existing product and made it even more user friendly."
+
+[Hands the three phones to the judges.]
+
+[The judges see SBB Mobile as they know it. Phones 1 and 2: Trips, with their trip on IR 90 1734 (to Lausanne, to Sion). Phone 3: Plan, with the bell on for IR 90 1734.]
+
+PRESENTER:
+    "Each of you is a different passenger on the evening of 17 September. You're going to Lausanne. You're going on to Sion. And you're still waiting on the platform in Lausanne. Keep your phone locked for now.
+    We only changed the places where SBB already talks about disruptions: the notification, a yellow band on top of every tab, and the Information page."
+
+SCENE 2: FIRE ON THE LINE (0:30 – 1:20)
+---------------------------------------
+
+PRESENTER: "Emil, the first messages, please."
+
+OPERATOR: Send beat 1.
+
+[The projector: 2 messages from SBB's event log, a power failure and an overhead-line fault. An incident opens by itself, "not published", with a countdown. The bar says "Now: The phones buzz in about 15 s".]
+
+[The presenter says nothing for about 15 seconds.]
+
+[All three phones buzz.]
+
+[The notification: "Disruption on IR 90 — There is a disruption on the Lausanne – Genève line. Nothing more is known yet. Next update by HH:MM."]
+
+PRESENTER: "Unlock your phone."
+
+[Each judge sees a yellow band at the top: "Disruption between Renens VD and Allaman".]
+
+PRESENTER: "Tap the band."
+
+The Information page: a yellow header "Interrupted service: Lausanne – Genève, since HH:MM", then Your trip, then SBB's Information: "Nothing more is known yet. Further information at approximately HH:MM."
+
+PRESENTER:
+    "Nobody in the control centre has typed anything yet. At first nobody knows what happened, not even the staff, and the passenger still isn't left alone. There's no dead end: you always know when you'll hear more."
+
+SCENE 3: CHAOS IN THE CONTROL CENTRE (1:20 – 2:40)
+--------------------------------------------------
+
+OPERATOR: Send beat 2.
+
+[The ticker fills with 7 real control-centre messages, mostly French shorthand: trains turning back, the overhead line down, the fire brigade on site.]
+
+PRESENTER (pointing at the projector):
+    "This is what the control centre writes, in internal shorthand. Passengers can't read that."
+
+OPERATOR: waits until the bar stops saying "Sending…" → Publish a status update. "Drafting…", then the AI draft fills in. Reads it for two seconds. → Publish.
+
+PRESENTER:
+    "The AI drafts from the internal ticker, with staff names and phone numbers removed first. A human checks every word."
+
+[The phones update in place, with no second buzz: the cause, overhead line damage and a fire, in plain English.]
+
+PRESENTER: "First, Your trip: our advice for you. Below it, under Information, the official word from SBB."
+
+PRESENTER (to JUDGE 1):
+    "You see 'Stay on board for now', 'To take the backup, decide by…', a real backup route, and 'Supersaver: you may take another train.' SBB hasn't said how long yet, so: stay for now, and here's your backup if you'd rather not wait."
+
+PRESENTER (to JUDGE 2): "Yours is the same, but the route goes on to Sion, with your own ticket's line."
+
+PRESENTER (to JUDGE 3): "And you: 'Wait at the station for now'. You're not on the train, so your advice is different."
+
+Optional, only if it was red in rehearsal. PRESENTER: "Open Plan and tap Map." The closed section, Allaman – Renens VD, framed in dashed red.
+
+PRESENTER:
+    "Same update, three passengers, three next moves. When SBB doesn't know how long yet, we don't guess. And official and our suggestion never mix."
+
+SCENE 4: THE JUDGES ASK (2:40 – 3:40)
+-------------------------------------
+
+PRESENTER: "Back on the Information page, tap Ask a question."
+
+- JUDGE 1 types "How do I get to Basel?": after 5–9 seconds, a route around the closure with real times, plus the ticket note.
+- JUDGE 2 taps "Will I make my connection?": an honest "can't say yet", with concrete backups.
+- JUDGE 3 taps "What happened?": the cause, from the published update.
+
+[Any language works. Read the answers off the phones: the routes come live from the journey planner.]
+
+PRESENTER (to JUDGE 2): "The chat tells you what SBB knows. Your trip shows our backup plan."
+
+OPERATOR: opens Passenger questions on the projector. The judges' questions appear, grouped by topic.
+
+PRESENTER:
+    "Ask it anything about your trip. It answers from what SBB published and from the live journey planner, and it's told never to invent a time; if it's ever slow, our rule engine answers instead. And your questions land in the control centre, grouped, so the next update can answer everyone at once."
+
+SCENE 5: BUSES ON THE WAY (3:40 – 4:40)
+---------------------------------------
+
+OPERATOR: Send beat 3.
+
+[The ticker: 14 buses ordered, the replacement-bus notice.]
+
+OPERATOR: Publish a status update → checks that Alternatives includes the buses (the draft has seen the judges' questions, so it should answer "Is there a bus?") → Publish.
+
+Phones 1 and 2: Your trip's headline becomes "Follow SBB's advice". The buses come first, tagged "Confirmed by SBB" · "Recommended", then our route, then "Stay on this train". The band shows the new title.
+
+PRESENTER:
+    "Look at Your trip again. SBB's own advice now comes first, and our suggestion steps back. And the question you asked a minute ago, 'Is there a bus?', now has SBB's own answer."
+
+PRESENTER (to JUDGE 3):
+    "You still see 'Wait at the station'. The buses are for the closed section, and your train still comes through Lausanne."
+
+SCENE 6: LINE OPEN AGAIN (4:40 – 5:20)
+--------------------------------------
+
+OPERATOR: Send beat 4 → Resolve → checks the AI's all-clear → Resolve.
+
+[The phones: "Resolved HH:MM" and the all-clear text; the yellow band disappears from every tab; the notification updates one last time; the chat closes kindly.]
+
+SCENE 7: CLOSE (5:20 – 5:40)
+----------------------------
+
+PRESENTER:
+    "On 17 September, the first public travel advice came after 95 minutes, and the bus notice after 160. Here, everyone checked in knew within 15 seconds, and got their own next move with every update."
+
+[Collects the phones.]
+
+------------------------------------------------------------
+
+TO SAVE TIME
+------------
+
+Cut the map moment first, then JUDGE 3's chat question, then scene 5. Never cut the safety net (scene 2) or the close.
+
+LIKELY QUESTIONS
+----------------
+
+- "How does it know I'm on that train?": "A Bluetooth beacon in each car, or the car's QR code, like EasyRide. On stage the beacon is simulated; the scanning code is real."
+- "What if the AI draft is wrong?": "It's a draft. A human checks and publishes every word. The passenger's advice is computed from the published facts and the real timetable, not written by the AI."
+- "Where do the routes come from?": "Live from OJP, the Swiss journey planner, at the real hour, so the route on your phone is what OJP gives right now."
+- "Does SBB have to replace anything?": "No. We sit between the ticker the control centre already writes and the channels SBB already uses: the app, push, the status page."
+- "Other languages?": "Every update is written in German, French, Italian and English, and the app follows the phone's language."

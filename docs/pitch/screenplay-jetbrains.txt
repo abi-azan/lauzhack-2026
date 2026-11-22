@@ -1,0 +1,175 @@
+SCREENPLAY: JETBRAINS PITCH (ABOUT 4 MINUTES)
+=============================================
+
+A live demo on four Compose Multiplatform screens, with no slides. It answers the brief's judging points (challenges/jetbrains-kmp.md):
+- two or more platforms;
+- a native-feeling UX;
+- what's shared in commonMain, plus the backend, localization and shared AI;
+- innovation;
+- the agentic process;
+- the presentation.
+
+The setup details and fallbacks are in jetbrains-demo-notes.md and jetbrains-live.md. This file is the run of the show, line by line.
+
+What changed since those notes: the operator now sends the beats with Send beat N in the dashboard's Live demo bar (c119bed), not with Enter in a terminal. The publish dialog shows one line, "Drafted by the Koog agent from N internal messages", so speak the tools rather than point at them.
+
+CAST
+----
+
+- PRESENTER: Albert / standing; all talking points
+- OPERATOR: Emil / the Live demo bar in the web dashboard, and Publish in the desktop dashboard
+- PHONE: Matej (@cappig) / the Android phone, mirrored with scrcpy --stay-awake over USB; airplane mode; the chat
+- BACKUP: Martin / the rehearsal recording; smoke.mjs <A> on standby
+
+THE SET (ON THE PROJECTOR, SIDE BY SIDE)
+----------------------------------------
+
+1. The Android phone (scrcpy), the passenger app on Android.
+2. The passenger app in a narrow browser window: <A>/#/checkin/IR90-1734?car=7, wasm.
+3. The web dashboard <A>/admin/, wasm, with the Live demo bar at the bottom.
+4. The desktop dashboard API_URL=<A> ./gradlew :admin:run, on the JVM. Start it well before, since its first run compiles.
+
+BEFORE THE LIGHTS GO UP
+-----------------------
+
+- The pre-stage checklist in sbb-demo-notes.md: ./demo test --reset --force at 9/9, then Start over in the bar.
+- ./demo koog on. This pitch shows the Koog agent; the SBB pitch turns it off.
+- The phone and the web app are checked in to IR 90 1734. Both dashboards count 2 on board.
+- Every screen in English and the light theme. The phone is unmuted with Do Not Disturb off.
+
+------------------------------------------------------------
+
+SCENE 1: ONE CODEBASE (0:00 – 0:30)
+-----------------------------------
+
+[Four screens, all quiet.]
+
+PRESENTER:
+    "17 September, 17:22: a fire on the overhead line between Allaman and Renens VD. Passengers waited 95 minutes for the first public advice. We wrote the fix once, in Kotlin, and it runs on every screen you see."
+
+[Pointing at each screen in turn.]
+
+    "An Android app. The same app in the browser. The control room on the web and on the desktop. One Kotlin codebase, five binaries with the Ktor server."
+
+SCENE 2: THE SAFETY NET (0:30 – 1:00)
+-------------------------------------
+
+OPERATOR: Send beat 1 in the web dashboard's bar.
+
+PRESENTER: "A real message from SBB's event log opens an incident by itself."
+
+[About 15 seconds. Both dashboards show the new incident and its countdown.]
+
+[The phone and the web app show "not known yet, next update by …". PHONE holds the phone up.]
+
+PRESENTER: "Nobody typed anything. That's the safety net, and it's the same model classes on all four screens."
+
+SCENE 3: THE KOOG AGENT (1:00 – 1:30)
+-------------------------------------
+
+OPERATOR: Send beat 2. Then, in the desktop dashboard: Publish a status update. The draft fills in, preselected "from the ticker (AI)".
+
+[On screen: "Drafted by the Koog agent from N internal messages. Check it before publishing."]
+
+PRESENTER:
+    "The control centre writes internal shorthand, mostly French. The update you see was drafted by a Koog agent defined in commonMain. Its tools are our own shared functions: the ticker, what's published, the affected trains, our next-move function, and what passengers are asking. So the AI can only draft from facts our code computes. A human reads it and publishes."
+
+SCENE 4: MOMENT 1, ONE CLICK AND FOUR SCREENS (1:30 – 1:40)
+-----------------------------------------------------------
+
+OPERATOR: Publish in the desktop dashboard.
+
+[Within a second or two: the phone gets a notification, the web app updates, and the web dashboard's timeline shows the update.]
+
+PRESENTER: "One click. The same update, the same model classes, on all four screens."
+
+SCENE 5: MOMENT 2, OFFLINE ON THE PHONE (1:40 – 2:05)
+-----------------------------------------------------
+
+PHONE: swipes down → Airplane mode, and checks that Wi-Fi is off too.
+
+PRESENTER: "Now the phone loses its connection, like in a tunnel."
+
+PHONE: Ask a question → the quick reply "Will I make my connection?"
+
+[On screen: an answer built from the update the phone already has, and under it "Answered on your phone · not passed on".]
+
+PRESENTER:
+    "The question can't reach our server. So the same Engine.kt that answers on the server answers here, on the phone, from what SBB already published. And it's honest that nobody in the control room saw the question."
+
+PHONE: Airplane mode off. The phone reconnects within about 10 s.
+
+SCENE 6: MOMENT 3, SHARED LOGIC IN THE BROWSER (2:05 – 2:20)
+------------------------------------------------------------
+
+OPERATOR: in the web dashboard: New incident → picks Renens VD → Allaman → the affected trains appear instantly → Cancel.
+
+PRESENTER:
+    "Those trains appear instantly. That's the shared affectedTrains() compiled to WebAssembly, in the browser. The server ran the same function on the JVM when the ticker came in."
+
+SCENE 7: NATIVE FEEL (2:20 – 2:30)
+----------------------------------
+
+OPERATOR: the dark toggle in the dashboard header. PHONE: dark mode in the app's Profile.
+
+PRESENTER:
+    "Dark and light, with the same SBB design tokens in both apps. The app speaks German, French, Italian and English, updates included."
+
+SCENE 8: RESOLVE (2:30 – 2:40)
+------------------------------
+
+OPERATOR: Send beat 4 → Resolve → Resolve.
+
+[All four screens show "Resolved".]
+
+SCENE 9: WHAT'S SHARED (2:40 – 3:15)
+------------------------------------
+
+PRESENTER:
+    "We measured it. Counting the shared module it compiles in, the passenger app is 94 percent common code: about 16,600 lines in commonMain, against 870 for Android and under 200 for the web. The dashboard is 98.5 percent common.
+    What's shared is the logic that matters: the model, train matching, the update templates, nextMove(), and the chat's rules engine. We ported that engine from TypeScript and proved it against 2,940 golden answers from the old one.
+    Only what needs the OS stays per platform: Bluetooth check-in, the foreground service and notifications on Android, browser notifications on the web. That's three expect functions. And the same tests run unchanged on the JVM and as wasm in headless Chrome: 122 runs, zero failures."
+
+SCENE 10: THE DETERMINISTIC CORE (3:15 – 3:30)
+----------------------------------------------
+
+PRESENTER:
+    "The card a passenger sees is never model output. nextMove() is plain arithmetic on SBB's published facts and the real journey planner. The Koog agent can read it, so the draft never contradicts the card, but a human publishes every word."
+
+SCENE 11: FOUR PEOPLE, FOUR AGENTS (3:30 – 3:55)
+------------------------------------------------
+
+PRESENTER:
+    "Four of us, each with a Claude Code agent, on one repo at the same time. They coordinated on a GitHub issue as a message board: 304 posts. Every module has an owner. An agent posts a CLAIM before it touches files, the owners ACK, and it posts DONE when it's pushed. One agent is the lead and decides. 180 of our 246 commits carry the Claude co-author line.
+    A real thread from tonight: one agent found the chat contradicted the next-move card, fixed it on a branch with tests, the owner's agent reviewed it, the lead approved: six minutes.
+    To be clear: we used Claude Code in the terminal, not JetBrains Air."
+
+[If Emil's Air recording, J2, exists: play 10 seconds and say "We also ran Junie and Claude Code side by side in Air on one task, and kept the better result."]
+
+SCENE 12: CLOSE (3:55 – 4:00)
+-----------------------------
+
+PRESENTER: "SBB: 95 minutes. Us: 15 seconds. One codebase, five binaries. Thank you."
+
+------------------------------------------------------------
+
+IF THE SLOT IS 3 MINUTES
+------------------------
+
+Cut scene 6 (Moment 3) and scene 7. Shorten scene 3 to one sentence: "The draft is a Koog agent in commonMain whose tools are our own functions."
+
+DON'T CLAIM
+-----------
+
+- That the Koog agent runs in the browser. Its wasm target only compiles.
+- iOS. "One more target and three actual functions; no Xcode on our laptops."
+- That nextMove() runs on the phone. The server computes it; the chat engine does run on the phone offline.
+- That the Bluetooth beacon on stage is real. It's simulated; the scanning code is real.
+
+IF SOMETHING BREAKS
+-------------------
+
+The fallbacks are in jetbrains-demo-notes.md. In short:
+- If Koog fails, the dialog falls back to the single-call draft; speak the Koog point.
+- If a screen is dead, point at its twin.
+- If the demo is dead, BACKUP plays the recording.

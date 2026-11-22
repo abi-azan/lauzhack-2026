@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Next-move card (T9). Own file to avoid merge conflicts in strings.xml. -->
+<resources>
+    <string name="nm_title">Ihr nächster Schritt</string>
+    <string name="nm_recommended">Empfohlen</string>
+    <string name="nm_decide_by">Entscheiden bis %1$s</string>
+    <string name="nm_src_sbb">Von der SBB bestätigt</string>
+    <string name="nm_src_timetable">Fahrplan</string>
+    <string name="nm_src_stay">Dieser Zug</string>
+    <string name="nm_arrive">Ankunft %1$s</string>
+    <string name="nm_arrive_unknown">Ankunft noch unbekannt</string>
+    <string name="nm_leaves">Abfahrt %1$s</string>
+    <string name="nm_next_update">Nächste Information der SBB bis %1$s</string>
+    <string name="nm_dest_assumed">Wir nehmen an, dass Sie in %1$s aussteigen. Reisen Sie weiter? Sagen Sie uns, wo Sie aussteigen.</string>
+    <string name="nm_estimate">Schätzung</string>
+    <string name="nm_decide_by_backup">Für die Alternative entscheiden bis %1$s</string>
+    <string name="nm_footer">Unsere Schätzung aus den veröffentlichten Informationen und dem Fahrplan, keine offizielle Anweisung.</string>
+</resources>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1600" height="8" fill="#EB0000"/>
+
+  <!-- header -->
+  <text x="60" y="66" font-size="18" font-weight="700" fill="#EB0000" letter-spacing="2">JETBRAINS · TEST EVIDENCE</text>
+  <text x="60" y="124" font-size="50" font-weight="700" fill="#141414">Same tests, every target. 122 runs, 0 failures.</text>
+  <text x="60" y="168" font-size="24" fill="#5A5A5A">The 43 commonTest tests run unchanged on the JVM and in headless Chrome (wasmJs).</text>
+
+  <!-- table header -->
+  <g font-size="17" font-weight="700" fill="#767676" letter-spacing="1.5">
+    <text x="60" y="240">MODULE</text>
+    <text x="480" y="240">TARGET</text>
+    <text x="1040" y="240">PASSED</text>
+  </g>
+  <line x1="60" y1="256" x2="1540" y2="256" stroke="#141414" stroke-width="2"/>
+
+  <!-- rows: each 92 tall -->
+  <g font-size="26" fill="#141414">
+    <!-- shared jvm -->
+    <text x="60" y="306" font-weight="700">kmp/shared</text>
+    <text x="60" y="334" font-size="19" fill="#767676">model, train matching, chat engine, nextMove()</text>
+    <text x="480" y="318">JVM</text>
+    <rect x="1040" y="294" width="380" height="30" fill="#EB0000"/>
+    <text x="1540" y="318" font-weight="700" text-anchor="end">39 / 39</text>
+    <line x1="480" y1="348" x2="1540" y2="348" stroke="#E5E5E5" stroke-width="2"/>
+
+    <!-- shared wasm -->
+    <text x="480" y="398">wasmJs · headless Chrome</text>
+    <rect x="1040" y="374" width="380" height="30" fill="#EB0000"/>
+    <text x="1540" y="398" font-weight="700" text-anchor="end">39 / 39</text>
+    <line x1="60" y1="428" x2="1540" y2="428" stroke="#D2D2D2" stroke-width="2"/>
+
+    <!-- admin desktop -->
+    <text x="60" y="478" font-weight="700">kmp/admin</text>
+    <text x="60" y="506" font-size="19" fill="#767676">dashboard state reducer</text>
+    <text x="480" y="490">Desktop · JVM</text>
+    <rect x="1040" y="466" width="39" height="30" fill="#EB0000"/>
+    <text x="1540" y="490" font-weight="700" text-anchor="end">4 / 4</text>
+    <line x1="480" y1="520" x2="1540" y2="520" stroke="#E5E5E5" stroke-width="2"/>
+
+    <!-- admin wasm -->
+    <text x="480" y="570">wasmJs · headless Chrome</text>
+    <rect x="1040" y="546" width="39" height="30" fill="#EB0000"/>
+    <text x="1540" y="570" font-weight="700" text-anchor="end">4 / 4</text>
+    <line x1="60" y1="600" x2="1540" y2="600" stroke="#D2D2D2" stroke-width="2"/>
+
+    <!-- server -->
+    <text x="60" y="650" font-weight="700">kmp/server</text>
+    <text x="60" y="678" font-size="19" fill="#767676">Ktor end to end, chat, push, PII scrubbing</text>
+    <text x="480" y="662">JVM</text>
+    <rect x="1040" y="638" width="351" height="30" fill="#EB0000"/>
+    <text x="1540" y="662" font-weight="700" text-anchor="end">36 / 36</text>
+    <line x1="60" y1="700" x2="1540" y2="700" stroke="#141414" stroke-width="2"/>
+
+    <text x="60" y="752" font-weight="700">Total</text>
+    <text x="480" y="752" fill="#5A5A5A">5 test tasks, 3 kinds of target</text>
+    <text x="1540" y="752" font-weight="700" fill="#EB0000" text-anchor="end">122 / 122</text>
+  </g>
+
+  <!-- footer -->
+  <rect x="60" y="790" width="1480" height="80" rx="8" fill="#F6F6F6"/>
+  <text x="80" y="822" font-size="18" fill="#141414" font-family="DejaVu Sans Mono, Menlo, monospace">./gradlew :shared:allTests :admin:allTests :server:test</text>
+  <text x="80" y="852" font-size="17" fill="#5A5A5A">22 Nov 2026, 05:36 CET, at 7db346a · JDK 21 · Chrome 157 · BUILD SUCCESSFUL in 43 s · counts from the JUnit XML reports</text>
+</svg>

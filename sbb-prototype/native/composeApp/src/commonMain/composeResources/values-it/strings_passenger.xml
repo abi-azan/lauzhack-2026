@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Passenger side (check-in, chat, heads-up): owned by the T1 screens in screens/easyride. -->
+<resources>
+    <string name="p_stage_investigating">Accertamenti in corso</string>
+    <string name="p_stage_identified">Causa nota</string>
+    <string name="p_stage_monitoring">In osservazione</string>
+    <string name="p_stage_resolved">Risolto</string>
+    <string name="p_live_on_body">Riconosciamo il vostro treno appena salite.</string>
+    <string name="p_live_paused">In pausa per questo viaggio.</string>
+    <string name="p_qr_hint">Nessun segnale? Scansionate il codice QR nella vostra carrozza.</string>
+    <string name="p_searching">Ricerca del vostro treno …</string>
+    <string name="p_look_again">Cercare il mio treno</string>
+    <string name="p_saved_title">Siete sul %1$s?</string>
+    <string name="p_saved_body">Dal vostro viaggio salvato per %1$s.</string>
+    <string name="p_get_updates">Ricevere le info in tempo reale</string>
+    <string name="p_qr_found">Carrozza %1$s</string>
+    <string name="p_connecting">Connessione …</string>
+    <string name="p_to">per %1$s</string>
+    <string name="p_not_on_train">Non siete su questo treno?</string>
+    <string name="p_er_dep">Part.:</string>
+    <string name="p_er_change">modificare</string>
+    <string name="p_er_class2">2a classe</string>
+    <string name="p_er_class1">1a classe</string>
+    <string name="p_er_travel_time">Durata del viaggio</string>
+    <string name="p_er_start">Avvio</string>
+    <string name="p_er_stop">Stop</string>
+    <string name="p_er_swipe_start">Scorrere a destra per avviare</string>
+    <string name="p_er_swipe_stop">Scorrere a sinistra per fermare</string>
+    <string name="p_on">Sul</string>
+    <string name="p_car_inline">carrozza %1$s</string>
+    <string name="p_src_beacon">Rilevato automaticamente</string>
+    <string name="p_src_qr">Registrato</string>
+    <string name="p_src_saved">Dal vostro viaggio salvato</string>
+    <string name="p_chip_on_board">A bordo</string>
+    <string name="p_chip_detected">rilevato</string>
+    <string name="p_auto_title">Riconoscere automaticamente il mio treno</string>
+    <string name="p_auto_off">Disattivato. Attivatelo in Profilo › Notifiche.</string>
+    <string name="p_auto_no_perm">L’autorizzazione Bluetooth è disattivata.</string>
+    <string name="p_detected_car">Carrozza %1$s, rilevata automaticamente</string>
+    <string name="p_chip_on_board_car">A bordo, carrozza %1$s</string>
+</resources>

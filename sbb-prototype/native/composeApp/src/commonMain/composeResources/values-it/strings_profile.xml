@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notif_saved_journeys">Viaggi salvati</string>
+    <string name="notif_disruption_title">Informazioni sulle perturbazioni</string>
+    <string name="notif_disruption_body">Riceverete notifiche in caso di ritardi, cambiamenti di binario, guasti e perturbazioni durante i vostri viaggi.</string>
+    <string name="notif_transfer_title">Informazioni sulle perturbazioni e sulle coincidenze</string>
+    <string name="notif_transfer_body">Oltre alle informazioni sulle perturbazioni, riceverete promemoria quando è il momento di salire, cambiare e scendere.</string>
+    <string name="notif_commuting_body">Riceverete notifiche in caso di ritardi, cambiamenti di binario, soppressioni e perturbazioni sul vostro tragitto da pendolare.</string>
+    <string name="notif_train_section">In treno</string>
+    <string name="notif_train_group">Info in tempo reale sul vostro treno</string>
+    <string name="notif_detect_title">Riconoscere automaticamente il mio treno (Bluetooth)</string>
+    <string name="notif_detect_body">Solo in treno. Le FFS non vi seguono: è il vostro telefono a riconoscere il treno.</string>
+    <string name="notif_detect_now">Ora sul %1$s · carrozza %2$s</string>
+    <string name="notif_detect_no_perm">L’autorizzazione Bluetooth è disattivata. Toccate per concederla.</string>
+    <string name="notif_detect_denied">Senza Bluetooth non possiamo riconoscere il vostro treno. Potete sempre scansionare il codice QR nella vostra carrozza.</string>
+    <string name="notif_detect_sheet_title">Riconoscere il mio treno</string>
+    <string name="notif_detect_lead">Se succede qualcosa sul vostro treno, FFS Mobile vi avvisa subito, anche con il telefono in tasca.</string>
+    <string name="notif_reason_bt_title">Bluetooth</string>
+    <string name="notif_reason_bt_body">Il vostro telefono riconosce il treno su cui salite dal suo segnale. Niente da toccare, niente da scansionare.</string>
+    <string name="notif_reason_notif_title">Notifiche</string>
+    <string name="notif_reason_notif_body">Per raggiungervi appena ci sono novità sul vostro treno.</string>
+    <string name="notif_turn_on">Attivare</string>
+    <string name="notif_not_now">Non ora</string>
+    <string name="profile_help_empty">Aiuto e contatto non fanno parte di questo prototipo. In Mobile FFS qui trovi le FAQ e il Contact Center FFS.</string>
+    <string name="profile_wallet_empty">I mezzi di pagamento e i buoni salvati non fanno parte di questo prototipo.</string>
+    <string name="profile_offers_empty">Le impostazioni di offerte &amp; pubblicità non fanno parte di questo prototipo.</string>
+    <string name="profile_ticket_purchase_empty">Le impostazioni per l’acquisto di biglietti non fanno parte di questo prototipo.</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Passenger chat sheet (spec P4/P5): owned by the chat (screens/easyride/ChatSheet.kt). Own file to avoid merge conflicts. -->
+<resources>
+    <string name="chat_title">Fragen zu Ihrem Zug</string>
+    <string name="chat_ask">Frage stellen</string>
+    <string name="chat_entry">Antworten aus den Meldungen der Betriebszentrale zu Ihrem Zug.</string>
+    <string name="chat_welcome">Ich antworte aus den Meldungen der Betriebszentrale zu Ihrem Zug. Im Notfall benutzen Sie den Notruf im Zug.</string>
+    <string name="chat_q_connection">Erreiche ich meinen Anschluss?</string>
+    <string name="chat_q_bus">Gibt es einen Bus?</string>
+    <string name="chat_q_what">Was ist passiert?</string>
+    <string name="chat_placeholder">Ihre Frage</string>
+    <string name="chat_send">Senden</string>
+    <string name="chat_answering">Antwort folgt</string>
+    <string name="chat_src_update">Aus der Meldung von %1$s</string>
+    <string name="chat_src_updates">Aus den Meldungen der Betriebszentrale</string>
+    <string name="chat_src_passed_on">Noch nicht bekannt</string>
+    <string name="chat_src_safety">Sicherheitshinweis</string>
+    <string name="chat_src_general">Allgemeine SBB-Information</string>
+    <string name="chat_src_offline">Auf Ihrem Telefon beantwortet</string>
+    <string name="chat_slow">Bitte warten Sie kurz vor der nächsten Frage.</string>
+    <string name="chat_closing">Die Störung ist vorbei. Sie können noch bis %1$s fragen.</string>
+    <string name="chat_closed_resolved">Die Störung ist vorbei, deshalb ist dieser Chat geschlossen. Die letzte Meldung bleibt auf der Störungsseite.</string>
+    <string name="chat_closed">Dieser Chat ist offen, wenn Ihr Zug von einer Störung betroffen ist.</string>
+</resources>

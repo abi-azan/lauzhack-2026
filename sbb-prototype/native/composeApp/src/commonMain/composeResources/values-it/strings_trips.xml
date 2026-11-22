@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="trips_journey_active">Il viaggio è in corso</string>
+    <string name="trips_departure_at">%1$s, partenza alle %2$s</string>
+    <string name="trips_today">Oggi</string>
+    <string name="trips_tomorrow">Domani</string>
+    <!-- The red banner on a saved trip while its train has an open incident: the affected section. -->
+    <string name="trips_incident_cause">Perturbazione: %1$s</string>
+</resources>

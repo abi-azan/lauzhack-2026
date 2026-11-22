@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Launcher foreground: the SBB signet (assets/icons/sbb-signet-small.svg) in red, scaled x5 into the 108dp adaptive canvas, centred in the 66dp safe zone. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group android:scaleX="5" android:scaleY="5" android:translateX="-6" android:translateY="-6">
+        <path
+            android:fillColor="#EB0000"
+            android:fillType="evenOdd"
+            android:pathData="m13.264 9 2.352 2.318h-2.924V9h-1.383v2.318H8.401L10.753 9H9.004L6 12l3.004 3h1.749L8.4 12.698h2.908V15h1.383v-2.302h2.924L13.264 15h1.748L18 12l-2.988-3z" />
+    </group>
+</vector>

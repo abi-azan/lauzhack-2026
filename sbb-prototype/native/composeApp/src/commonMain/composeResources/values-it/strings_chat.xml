@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Passenger chat sheet (spec P4/P5): owned by the chat (screens/easyride/ChatSheet.kt). Own file to avoid merge conflicts. -->
+<resources>
+    <string name="chat_title">Domande sul vostro treno</string>
+    <string name="chat_ask">Fare una domanda</string>
+    <string name="chat_entry">Risposte dai messaggi della centrale di controllo sul vostro treno.</string>
+    <string name="chat_welcome">Rispondo in base ai messaggi della centrale di controllo sul vostro treno. In caso di emergenza, usate la chiamata d’emergenza del treno.</string>
+    <string name="chat_q_connection">Prenderò la coincidenza?</string>
+    <string name="chat_q_bus">C’è un autobus?</string>
+    <string name="chat_q_what">Cosa è successo?</string>
+    <string name="chat_placeholder">La vostra domanda</string>
+    <string name="chat_send">Invia</string>
+    <string name="chat_answering">Risposta in arrivo</string>
+    <string name="chat_src_update">Dal messaggio delle %1$s</string>
+    <string name="chat_src_updates">Dai messaggi della centrale di controllo</string>
+    <string name="chat_src_passed_on">Non ancora noto</string>
+    <string name="chat_src_safety">Informazione di sicurezza</string>
+    <string name="chat_src_general">Informazione generale FFS</string>
+    <string name="chat_src_offline">Risposta dal vostro telefono</string>
+    <string name="chat_slow">Attendete un momento prima della prossima domanda.</string>
+    <string name="chat_closing">La perturbazione è terminata. Potete ancora fare domande fino alle %1$s.</string>
+    <string name="chat_closed_resolved">La perturbazione è terminata, quindi questa chat è chiusa. L’ultimo messaggio resta nella pagina della perturbazione.</string>
+    <string name="chat_closed">Questa chat si apre in caso di perturbazione sul vostro treno.</string>
+</resources>

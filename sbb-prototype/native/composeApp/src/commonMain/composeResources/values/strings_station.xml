@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "At the station" (station mode, plan A): screens/station/StationScreen.kt. The app is in English for now. -->
+<resources>
+    <string name="st_title">At the station</string>
+    <string name="st_intro">Waiting for a train? Follow it, and we'll tell you as soon as something changes, and what to do.</string>
+    <string name="st_where">Where are you?</string>
+    <string name="st_departures">Departures from %1$s</string>
+    <string name="st_none">No more departures from here right now.</string>
+    <string name="st_offline">Connect to the live train service to see departures.</string>
+    <string name="st_unreachable">We can't reach the train service right now. Check your connection and try again.</string>
+    <string name="st_retry">Try again</string>
+    <string name="st_loading">Loading departures…</string>
+    <string name="st_get_off">Where do you get off?</string>
+    <string name="st_not_sure">Not sure</string>
+    <string name="st_follow">Follow this train</string>
+    <string name="st_platform">Pl. %1$s</string>
+    <string name="st_in_min">in %1$s min</string>
+    <string name="st_now">now</string>
+    <string name="inc_following">You\'re waiting at %1$s.</string>
+</resources>

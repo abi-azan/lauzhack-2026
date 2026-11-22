@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shop_products">Produkte</string>
+    <string name="shop_day_passes">Tageskarten Schweiz</string>
+    <string name="shop_p_friends_youth">Freunde-Tageskarte für Jugendliche</string>
+    <string name="shop_p_saver">Spartageskarte</string>
+    <string name="shop_p_half_fare">Tageskarte zum Halbtax</string>
+    <string name="shop_p_class_upgrade">Klassenwechsel Tageskarte</string>
+    <string name="shop_p_children">Tageskarte Kinder</string>
+    <string name="shop_p_bike">Velo-Tageskarte</string>
+    <string name="shop_services_title">Services für Ihre Reise</string>
+    <string name="shop_s_stations">Bahnhöfe</string>
+    <string name="shop_s_stations_text">Profitieren Sie von unseren Dienstleistungen am Bahnhof.</string>
+    <string name="shop_s_traffic">Bahnverkehrsinformation</string>
+    <string name="shop_s_traffic_text">Hier finden Sie jederzeit Informationen zur aktuellen Verkehrslage und zu Störungen.</string>
+    <string name="shop_s_lost_found">SBB Fundservice</string>
+    <string name="shop_s_lost_found_text">Erfassen Sie hier Verlustmeldungen und Suchaufträge.</string>
+    <string name="shop_s_catering">Bahngastronomie</string>
+    <string name="shop_s_catering_text">Geniessen Sie unser Angebot an Speisen und Getränken in den SBB Restaurants und SBB Bistros.</string>
+    <string name="shop_s_luggage">Gepäckservice &amp; SBB Shop</string>
+    <string name="shop_s_luggage_text">Lassen Sie Ihr Gepäck transportieren, wechseln Sie Ihre Fremdwährung, kaufen Sie die neusten Bahnhofsuhren und vieles mehr.</string>
+    <string name="shop_cd_open_link">Link öffnen</string>
+</resources>

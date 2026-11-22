@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# One entry point for the whole demo. Run from anywhere in the repo.
+#
+#   ./demo start      start everything (builds on first run): server, dashboard, passenger web app, HTTPS tunnel
+#   ./demo stop       stop it all (including the tunnel: the next start gets a new address)
+#   ./demo status     what's running, the public address and the check-in QR code
+#   ./demo run        reset, then play the 17 Sep incident in 4 beats (press Enter for each beat)
+#   ./demo reset      clear all incidents and check-ins
+#   ./demo update     git pull, rebuild everything, restart
+#   ./demo open       open the dashboard and the passenger app in the browser
+#   ./demo test       automatic check of all 9 demo steps against the running demo
+#   ./demo install    run the demo as self-healing services (restart on crash, survive reboot, watchdog)
+#   ./demo koog on|off  AI drafts by the Koog agent or the single call; switches live, no restart (status: no argument)
+set -uo pipefail
+ROOT="$(cd "$(dirname "$0")" && pwd)"
+KMP="$ROOT/sbb-prototype/kmp"
+OPS="$KMP/scripts/demo.sh"
+
+SVC="railstatus-server railstatus-tunnel railstatus-awake railstatus-watchdog.timer"
+services() { systemctl --user cat railstatus-server >/dev/null 2>&1; }
+# The admin key is off by default (Emil's call); set ADMIN_KEY in the env to turn it back on.
+export ADMIN_KEY="${ADMIN_KEY:-}"
+url() { cat "$KMP/.demo/url" 2>/dev/null || true; }
+need_up() { curl -sf -m 2 localhost:8080/health >/dev/null || { echo "The demo isn't running. Start it with: ./demo start"; exit 1; }; }
+
+case "${1:-help}" in
+  install) "$OPS" build && "$KMP/ops/install.sh" ;;
+  start)   if services; then systemctl --user start $SVC && sleep 8 && "$OPS" status; else "$OPS" start; fi ;;
+  stop)
+    if services; then systemctl --user stop $SVC; echo "Stopped the services (they come back on the next ./demo start or reboot)."; exit 0; fi
+    "$OPS" stop
+    # Also a tunnel this script didn't start (e.g. one started by hand); the next start gets a new address.
+    pkill -f 'cloudflared tunnel .*--url http://localhos[t]:8080' && echo "stopped tunnel"
+    echo "Stopped. ./demo start brings it back (a quick tunnel gets a new address)." ;;
+  restart) if services; then systemctl --user restart railstatus-server && echo "backend restarted"; else "$OPS" restart; fi ;;
+  status)  "$OPS" status ;;
+  update)
+    git -C "$ROOT" pull --rebase origin main || exit 1
+    if services; then "$OPS" build && systemctl --user restart railstatus-server && echo "updated and restarted"; else "$OPS" restart --build; fi ;;
+  reset)   need_up; curl -sf -XPOST -H "X-Admin-Key: $ADMIN_KEY" localhost:8080/api/control/reset && echo "Reset: no incidents, no check-ins." ;;
+  run)
+    need_up
+    curl -sf -XPOST -H "X-Admin-Key: $ADMIN_KEY" localhost:8080/api/control/reset >/dev/null && echo "Reset done. Check the phones in to IR 90 1734, then press Enter for each beat."
+    cd "$KMP" && uv run -q --with pandas --with openpyxl --with redis python -I replayer/replay.py --beats ;;
+  open)
+    u="$(url)"; [ -z "$u" ] && u="http://localhost:8080"
+    xdg-open "$u/admin/" >/dev/null 2>&1 & xdg-open "$u/" >/dev/null 2>&1 &
+    echo "Dashboard: $u/admin/   Passenger app: $u/" ;;
+  koog)
+    need_up
+    case "${2:-}" in
+      on) e=koog ;;
+      off) e=single-call ;;
+      *) curl -s -H "X-Admin-Key: $ADMIN_KEY" localhost:8080/api/control/draft-engine; echo; exit 0 ;;
+    esac
+    curl -s -XPOST -H "content-type: application/json" -H "X-Admin-Key: $ADMIN_KEY" -d "{\"engine\":\"$e\"}" localhost:8080/api/control/draft-engine; echo
+    # Remembered for the next restart (ops/install.sh reads it).
+    if [ "$e" = koog ]; then echo koog > "$KMP/.demo/draft_engine"; else : > "$KMP/.demo/draft_engine"; fi ;;
+  test)
+    need_up; u="$(url)"; [ -z "$u" ] && u="http://localhost:8080"
+    node "$KMP/scripts/e2e/smoke.mjs" "$u" "${@:2}"; curl -sf -XPOST -H "X-Admin-Key: $ADMIN_KEY" localhost:8080/api/control/reset >/dev/null ;;
+  *) sed -n '2,13p' "$0" | sed 's/^# \{0,1\}//' ;;
+esac

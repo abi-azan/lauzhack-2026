@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Next-move card (T9). Own file to avoid merge conflicts in strings.xml. -->
+<resources>
+    <string name="nm_title">Your next move</string>
+    <string name="nm_recommended">Recommended</string>
+    <string name="nm_decide_by">Decide by %1$s</string>
+    <string name="nm_src_sbb">Confirmed by SBB</string>
+    <string name="nm_src_timetable">Timetable</string>
+    <string name="nm_src_stay">This train</string>
+    <string name="nm_arrive">Arrive %1$s</string>
+    <string name="nm_arrive_unknown">Arrival not known yet</string>
+    <string name="nm_leaves">Leaves %1$s</string>
+    <string name="nm_next_update">Next update from SBB by %1$s</string>
+    <string name="nm_dest_assumed">We assumed you get off in %1$s. Going further? Tell us where you get off.</string>
+    <string name="nm_estimate">Estimate</string>
+    <string name="nm_decide_by_backup">To take the backup, decide by %1$s</string>
+    <string name="nm_footer">Our estimate from the published information and the timetable, not an official instruction.</string>
+</resources>

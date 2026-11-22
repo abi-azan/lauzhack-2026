@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notif_saved_journeys">Gespeicherte Reisen</string>
+    <string name="notif_disruption_title">Störungsinformationen</string>
+    <string name="notif_disruption_body">Sie erhalten Benachrichtigungen bei Verspätungen, Gleisänderungen, Ausfällen und Störungen auf Ihren Reisen.</string>
+    <string name="notif_transfer_title">Störungs- und Umsteigeinformationen</string>
+    <string name="notif_transfer_body">Zusätzlich zu den Störungsinformationen erhalten Sie Erinnerungen, wenn Sie einsteigen, umsteigen und aussteigen müssen.</string>
+    <string name="notif_commuting_body">Sie erhalten Benachrichtigungen bei Verspätungen, Gleisänderungen, Ausfällen und Störungen auf Ihrer Pendelstrecke.</string>
+    <string name="notif_train_section">Im Zug</string>
+    <string name="notif_train_group">Live-Infos zu Ihrem Zug</string>
+    <string name="notif_detect_title">Meinen Zug automatisch erkennen (Bluetooth)</string>
+    <string name="notif_detect_body">Nur im Zug. Die SBB verfolgt Sie nicht; Ihr Telefon erkennt den Zug.</string>
+    <string name="notif_detect_now">Jetzt im %1$s · Wagen %2$s</string>
+    <string name="notif_detect_no_perm">Die Bluetooth-Berechtigung ist ausgeschaltet. Tippen Sie, um sie zu erlauben.</string>
+    <string name="notif_detect_denied">Ohne Bluetooth können wir Ihren Zug nicht erkennen. Sie können weiterhin den QR-Code in Ihrem Wagen scannen.</string>
+    <string name="notif_detect_sheet_title">Meinen Zug erkennen</string>
+    <string name="notif_detect_lead">Wenn auf Ihrem Zug etwas passiert, meldet sich SBB Mobile sofort, auch wenn Ihr Telefon in der Tasche ist.</string>
+    <string name="notif_reason_bt_title">Bluetooth</string>
+    <string name="notif_reason_bt_body">Ihr Telefon erkennt den Zug, in den Sie einsteigen, an seinem Signal. Nichts tippen, nichts scannen.</string>
+    <string name="notif_reason_notif_title">Benachrichtigungen</string>
+    <string name="notif_reason_notif_body">Damit wir Sie erreichen, sobald es Neuigkeiten zu Ihrem Zug gibt.</string>
+    <string name="notif_turn_on">Einschalten</string>
+    <string name="notif_not_now">Nicht jetzt</string>
+    <string name="profile_help_empty">Hilfe und Kontakt gehören nicht zu diesem Prototyp. In SBB Mobile finden Sie hier die FAQ und das SBB Contact Center.</string>
+    <string name="profile_wallet_empty">Gespeicherte Zahlungsmittel und Gutscheine sind nicht Teil dieses Prototyps.</string>
+    <string name="profile_offers_empty">Die Einstellungen zu Angeboten &amp; Werbung sind nicht Teil dieses Prototyps.</string>
+    <string name="profile_ticket_purchase_empty">Die Einstellungen für den Ticketkauf sind nicht Teil dieses Prototyps.</string>
+</resources>

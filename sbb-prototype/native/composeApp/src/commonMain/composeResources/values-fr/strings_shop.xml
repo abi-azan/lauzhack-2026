@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shop_products">Produits</string>
+    <string name="shop_day_passes">Cartes journalières Suisse</string>
+    <string name="shop_p_friends_youth">Carte journalière Amis pour jeunes</string>
+    <string name="shop_p_saver">Carte journalière dégriffée</string>
+    <string name="shop_p_half_fare">Carte journalière pour le demi-tarif</string>
+    <string name="shop_p_class_upgrade">Surclassement journalier</string>
+    <string name="shop_p_children">Carte journalière Enfant</string>
+    <string name="shop_p_bike">Carte journalière vélo</string>
+    <string name="shop_services_title">Services pour votre voyage</string>
+    <string name="shop_s_stations">Gares</string>
+    <string name="shop_s_stations_text">Profitez de notre offre de services en gare.</string>
+    <string name="shop_s_traffic">Info trafic ferroviaire</string>
+    <string name="shop_s_traffic_text">Trouvez ici à tout moment des informations sur la situation actuelle du trafic et les perturbations.</string>
+    <string name="shop_s_lost_found">Service des objets trouvés CFF</string>
+    <string name="shop_s_lost_found_text">Déclarez ici une perte ou lancez une recherche.</string>
+    <string name="shop_s_catering">Restauration ferroviaire</string>
+    <string name="shop_s_catering_text">Profitez de notre offre de mets et de boissons dans les CFF Restaurants et CFF Bistros.</string>
+    <string name="shop_s_luggage">Service bagages &amp; CFF Shop</string>
+    <string name="shop_s_luggage_text">Faites transporter vos bagages, changez vos devises, achetez les dernières horloges de gare et bien plus encore.</string>
+    <string name="shop_cd_open_link">Ouvrir le lien</string>
+</resources>

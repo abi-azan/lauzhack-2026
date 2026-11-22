@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The incident page (UX-SPEC P3/P5), screens/incident/IncidentScreen.kt. -->
+<resources>
+    <string name="inc_band_disruption">Disruption</string>
+    <string name="inc_since">since %1$s</string>
+    <string name="inc_your_trip">Your trip</string>
+    <string name="inc_affects">This disruption affects your train.</string>
+    <string name="inc_section">Line: %1$s</string>
+    <string name="inc_from_sbb">Information</string>
+    <string name="inc_alternatives">Alternatives</string>
+    <string name="inc_onboard">On board</string>
+    <string name="inc_next_by">Further information at approximately %1$s.</string>
+    <string name="inc_in_min">in %1$s min</string>
+    <string name="inc_due">due now</string>
+    <string name="inc_suggestion">Our suggestion</string>
+    <string name="inc_suggestion_note">Our estimate from the published information and the timetable, not an official instruction.</string>
+    <string name="inc_earlier">Earlier updates (%1$s)</string>
+    <string name="inc_ask">Ask a question</string>
+    <string name="inc_none">There's no disruption on your train right now.</string>
+    <!-- BS-KI standard wording (tp-info.ch, Anhang Ereignistexte) -->
+    <string name="inc_band_title">Interrupted service: %1$s</string>
+    <string name="inc_reason_unknown">The reason is not yet known.</string>
+</resources>

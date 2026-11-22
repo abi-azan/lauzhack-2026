@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shop_products">Prodotti</string>
+    <string name="shop_day_passes">Carte giornaliere Svizzera</string>
+    <string name="shop_p_friends_youth">Carta giornaliera Amici per giovani</string>
+    <string name="shop_p_saver">Carta giornaliera risparmio</string>
+    <string name="shop_p_half_fare">Carta giornaliera per l’abbonamento metà-prezzo</string>
+    <string name="shop_p_class_upgrade">Cambiamento di classe giornaliero</string>
+    <string name="shop_p_children">Carta giornaliera bambini</string>
+    <string name="shop_p_bike">Carta giornaliera bici</string>
+    <string name="shop_services_title">Servizi per il vostro viaggio</string>
+    <string name="shop_s_stations">Stazioni</string>
+    <string name="shop_s_stations_text">Approfittate della nostra offerta di servizi in stazione.</string>
+    <string name="shop_s_traffic">Informazioni sul traffico ferroviario</string>
+    <string name="shop_s_traffic_text">Qui trovate in ogni momento informazioni sulla situazione attuale del traffico e sulle perturbazioni.</string>
+    <string name="shop_s_lost_found">Servizio oggetti smarriti FFS</string>
+    <string name="shop_s_lost_found_text">Segnalate qui uno smarrimento o avviate una ricerca.</string>
+    <string name="shop_s_catering">Ristorazione ferroviaria</string>
+    <string name="shop_s_catering_text">Gustate la nostra offerta di cibi e bevande nei FFS Restaurant e FFS Bistro.</string>
+    <string name="shop_s_luggage">Servizio bagagli &amp; FFS Shop</string>
+    <string name="shop_s_luggage_text">Fate trasportare i vostri bagagli, cambiate valuta estera, acquistate gli ultimi orologi da stazione e molto altro.</string>
+    <string name="shop_cd_open_link">Aprire il link</string>
+</resources>

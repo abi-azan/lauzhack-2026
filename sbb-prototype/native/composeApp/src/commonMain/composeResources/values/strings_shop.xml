@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shop & Services tab (screens/shop). -->
+<resources>
+    <string name="shop_products">Products</string>
+    <string name="shop_day_passes">Day Passes Switzerland</string>
+    <string name="shop_p_friends_youth">Friends Day Pass for Youth</string>
+    <string name="shop_p_saver">Saver Day Pass</string>
+    <string name="shop_p_half_fare">Day Pass for the Half Fare Travelcard</string>
+    <string name="shop_p_class_upgrade">Day Class Upgrade</string>
+    <string name="shop_p_children">Day Pass Children</string>
+    <string name="shop_p_bike">Day Bike Pass</string>
+    <string name="shop_services_title">Services for your journey</string>
+    <string name="shop_s_stations">Stations</string>
+    <string name="shop_s_stations_text">Benefit from our range of station services.</string>
+    <string name="shop_s_traffic">Rail traffic information</string>
+    <string name="shop_s_traffic_text">Find information on the current service situation and disruptions here at all times.</string>
+    <string name="shop_s_lost_found">SBB Lost and Found Service</string>
+    <string name="shop_s_lost_found_text">Submit loss reports and search requests here.</string>
+    <string name="shop_s_catering">Rail catering</string>
+    <string name="shop_s_catering_text">Enjoy our range of food and drink in SBB Restaurants and SBB Bistros.</string>
+    <string name="shop_s_luggage">Luggage service &amp; SBB Shop</string>
+    <string name="shop_s_luggage_text">Have your luggage transported for you, exchange your foreign currency, buy the latest station clocks and much more.</string>
+    <string name="shop_cd_open_link">Open link</string>
+</resources>

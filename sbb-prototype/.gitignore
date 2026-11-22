@@ -1,0 +1,9 @@
+# SBB challenge data and anything derived from it must never be committed.
+app/public/scenarios/
+*.xlsx
+*.csv
+
+node_modules/
+dist/
+*.local
+*.tsbuildinfo

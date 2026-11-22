@@ -1,0 +1,135 @@
+SCREENPLAY: MAIN PITCH (LAUZHACK JURY, ABOUT 3 MINUTES)
+=======================================================
+
+The general jury sees every project, so this pitch tells the whole story once: the problem, a live demo on one phone, then how it's built. It's a live demo with no slides. The projector shows two windows side by side: the phone (mirrored) and the control-room dashboard.
+
+Facts and lines come from sbb-demo-notes.md and jetbrains-demo-notes.md. Counts were measured on 22 Nov at 10:25 local time: 304 board posts, 246 commits, 180 of them with the Claude co-author line.
+
+CAST
+----
+
+- PRESENTER: Albert / standing, centre stage
+- OPERATOR: Emil / at his laptop: the dashboard <A>/admin/ on the projector, the Live demo bar at the bottom
+- PHONE: Matej (@cappig) / holds the Android phone; it's mirrored with scrcpy --stay-awake over USB, next to the dashboard
+- BACKUP: Martin / off to the side: the rehearsal recording ready, and smoke.mjs <A> in a terminal
+
+BEFORE THE LIGHTS GO UP
+-----------------------
+
+- The pre-stage checklist in sbb-demo-notes.md, steps 1–3: ./demo status, ./demo test --reset --force at 9/9, then Start over in the Live demo bar.
+- The phone runs the latest main, is unmuted with Do Not Disturb off, and is checked in to IR 90 1734 as phone 1:
+  adb shell am start -n railstatus.mobile/.MainActivity --es api <A> --es persona supersaver --es beacon fake --es train IR90-1734 --es car 7 --es passive on --ez checkin true
+- The phone shows Trips; the dashboard shows Incidents, in the light theme.
+- Either draft engine works. Leave it as the last pitch left it.
+
+------------------------------------------------------------
+
+SCENE 1: THE QUESTION (0:00 – 0:25)
+-----------------------------------
+
+[The projector shows SBB Mobile on the phone, the Trips tab with today's trip on IR 90 1734, and an empty dashboard.]
+
+PRESENTER:
+    "17 September 2026, 17:22. A fire on the overhead line between Renens and Allaman, near Lausanne. Thousands of passengers sit in stopped trains with one question: what do I do now?
+    SBB's first public travel advice came after 95 minutes. The bus notice came after 160. Not because nobody cared: at first, nobody knew, not even the staff."
+
+[Beat.]
+
+    "So we built a status page for trains. Every passenger on an affected train hears within seconds, gets their own next move with every update, and can ask anything about their trip, answered from what SBB actually published."
+
+SCENE 2: THE FIRE (0:25 – 0:55)
+-------------------------------
+
+PRESENTER: "This is the real 17 September event log. Emil, send it."
+
+OPERATOR: clicks Send beat 1.
+
+[The dashboard: an incident opens by itself, "not published", with a countdown.]
+
+PRESENTER (over the 15 seconds of silence):
+    "Nobody in the control centre has typed a word. The system matched the message to the trains on that line. And if nobody publishes within 15 seconds, it tells the passengers itself."
+
+[The phone buzzes. PHONE holds it up.]
+
+[On screen: the notification "Disruption on IR 90 — … Nothing more is known yet. Next update by HH:MM", and a yellow band on top of the app.]
+
+PRESENTER:
+    "'Not known yet, next update by…'. That's honest, and it's 15 seconds instead of 95 minutes."
+
+SCENE 3: FROM SHORTHAND TO A DECISION (0:55 – 1:40)
+---------------------------------------------------
+
+OPERATOR: clicks Send beat 2.
+
+[The dashboard's ticker fills with 7 real control-centre messages, in French shorthand.]
+
+PRESENTER (pointing at the projector):
+    "This is what the control centre actually writes. No passenger can read that."
+
+OPERATOR: Publish a status update. The AI draft appears. Two seconds to read. Publish.
+
+PRESENTER:
+    "An AI drafts the passenger update from that ticker, in four languages, after removing staff names and phone numbers. A human checks every word and publishes."
+
+PHONE: taps the yellow band → the Information page.
+
+[On screen: "Your trip": "Stay on board for now", "To take the backup, decide by HH:MM", a real alternative route, "Supersaver: you may take another train." Below it, SBB's official update.]
+
+PRESENTER:
+    "And this is the part SBB's message can't do: what this passenger should do. SBB hasn't said how long yet, so we don't guess. Stay for now, here's your backup from the real timetable, and here's the last moment to decide. Our suggestion and SBB's official word never mix."
+
+SCENE 4: THE QUESTION NOBODY CAN ANSWER AT THE STATION (1:40 – 2:05)
+--------------------------------------------------------------------
+
+PHONE: Ask a question → types "How do I get to Basel?"
+
+[On screen, after 5–9 seconds: a route around the closure with real times, plus the ticket note.]
+
+OPERATOR: switches the dashboard to Passenger questions.
+
+[The question appears there, grouped with everyone else's.]
+
+PRESENTER:
+    "The chat answers from what SBB published and from the live Swiss journey planner, and it's told never to invent a time. If the model is slow or fails, our rule engine answers instead. And every question lands in the control centre, grouped. Three hundred people asking about buses become one line, so the next update answers all of them at once."
+
+SCENE 5: OVER (2:05 – 2:20)
+---------------------------
+
+OPERATOR: Send beat 4 → Resolve → checks the AI's all-clear → Resolve.
+
+[The phone: "Resolved", and the yellow band disappears.]
+
+PRESENTER: "And when it's over, everyone knows that too."
+
+[Beat 3, the buses, is skipped in this pitch.]
+
+SCENE 6: HOW IT'S BUILT (2:20 – 2:50)
+-------------------------------------
+
+PRESENTER:
+    "Everything you saw is one Kotlin Multiplatform codebase. The same code runs the server, the Android app, the app in the browser, and the dashboard on the web and the desktop. The passenger app is 94 percent shared code. The AI draft is a Koog agent whose tools are our own functions, and the next-move advice is plain arithmetic on SBB's published facts and the real journey planner, never model output.
+    We built it as four people with four AI coding agents, coordinating on one GitHub issue: 304 posts, 246 commits, claims, reviews and a lead, like a real team."
+
+SCENE 7: CLOSE (2:50 – 3:00)
+----------------------------
+
+PRESENTER:
+    "On 17 September, passengers waited 95 minutes. Here they knew in 15 seconds, and every update told each of them what to do next. Thank you."
+
+------------------------------------------------------------
+
+IF SOMETHING BREAKS
+-------------------
+
+- The phone doesn't buzz: PRESENTER: "The control room shows it went out" (point at the dashboard). Carry on; PHONE checks it in again afterwards.
+- The AI draft is slow: OPERATOR edits the template text and publishes. Say the AI line anyway.
+- The live server is down: BACKUP plays the rehearsal recording. PRESENTER narrates the same scenes.
+- Over time: Cut scene 4's dashboard switch, then scene 5. Never cut the close.
+
+LIKELY JURY QUESTIONS
+---------------------
+
+- "How does the phone know which train I'm on?": "Check-in by a Bluetooth beacon in each car, or the QR code in the car, like EasyRide. On stage the beacon is simulated; the scanning is real."
+- "What if the AI is wrong?": "The AI only drafts, and a human publishes. The chat model only gets SBB's published facts and the journey planner's results, it's told never to invent times, and if it fails or is slow, our deterministic rule engine answers instead."
+- "Is this real data?": "The 17 September messages are SBB's own logs, replayed. The alternative routes come live from the Swiss journey planner (OJP)."
+- "Would SBB have to replace anything?": "No. It sits between the ticker the control centre already writes and the channels SBB already uses."

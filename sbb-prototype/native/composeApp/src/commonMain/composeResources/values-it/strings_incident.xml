@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="inc_band_disruption">Perturbazione</string>
+    <string name="inc_since">dalle %1$s</string>
+    <string name="inc_your_trip">Il suo viaggio</string>
+    <string name="inc_affects">Questa perturbazione riguarda il suo treno.</string>
+    <string name="inc_section">Linea: %1$s</string>
+    <string name="inc_from_sbb">Informazione</string>
+    <string name="inc_alternatives">Alternative</string>
+    <string name="inc_onboard">A bordo</string>
+    <string name="inc_next_by">Ulteriori informazioni verso le %1$s.</string>
+    <string name="inc_in_min">tra %1$s min</string>
+    <string name="inc_due">atteso ora</string>
+    <string name="inc_suggestion">Il nostro suggerimento</string>
+    <string name="inc_suggestion_note">La nostra stima dalle informazioni pubblicate e dall’orario, non un’istruzione ufficiale.</string>
+    <string name="inc_earlier">Messaggi precedenti (%1$s)</string>
+    <string name="inc_ask">Fare una domanda</string>
+    <string name="inc_none">Al momento non ci sono perturbazioni sul suo treno.</string>
+    <!-- BS-KI standard wording (tp-info.ch, Anhang Ereignistexte) -->
+    <string name="inc_band_title">Interruzione: %1$s</string>
+    <string name="inc_reason_unknown">Il motivo non è ancora noto.</string>
+</resources>

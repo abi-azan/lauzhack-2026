@@ -1,0 +1,12 @@
+# Secrets
+.env
+.env.*
+.claude/worktrees/
+.claude/settings.local.json
+.env
+.gstack/
+
+# Per-user state of the board-news hook (.claude/hooks/board-news.sh)
+.claude/board-last-seen
+.claude/board-me
+.claude/board-last-check

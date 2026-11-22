@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Plan tab: plan screens, connections, connection detail, journey (owner: plan screens). -->
+<resources>
+    <string name="plan_from">From</string>
+    <string name="plan_to">To</string>
+    <string name="plan_board_from">Departure board from:</string>
+    <string name="plan_board_col_from">From</string>
+    <string name="plan_board_col_direction">Direction</string>
+    <string name="plan_departure_boards">Departure boards</string>
+    <string name="plan_touch_from">from</string>
+    <string name="plan_touch_to">to</string>
+    <string name="plan_touch_edit">edit</string>
+    <string name="plan_powered_by">powered by</string>
+    <string name="plan_boards_title">My Departure Boards</string>
+    <string name="plan_board_location">Departure board from location</string>
+    <string name="plan_board_all_dirs">All directions</string>
+    <string name="plan_board_add">Add departure board</string>
+    <string name="plan_board_direction_opt">Direction (optional)</string>
+    <string name="plan_board_restrict">Restrict modes of transport</string>
+    <string name="plan_accept">Accept</string>
+    <string name="plan_mode_train">Train</string>
+    <string name="plan_mode_bus">Bus</string>
+    <string name="plan_mode_boat">Boat</string>
+    <string name="plan_mode_tram">Tram</string>
+    <string name="plan_mode_metro">Metro</string>
+    <string name="plan_touch_edit_title">Edit touch timetable</string>
+    <string name="plan_touch_add_picture">Add picture</string>
+    <string name="plan_touch_edit_tile_title">Edit title</string>
+    <string name="plan_touch_delete">Delete tile</string>
+    <string name="plan_follow_train">Follow this train</string>
+    <string name="plan_legend_first">1st class coach</string>
+    <string name="plan_legend_second">2nd class coach</string>
+    <string name="plan_legend_stroller">Stroller space</string>
+    <string name="plan_legend_wheelchair">Wheelchair space with wheelchair-accessible toilet</string>
+    <string name="plan_map">Map</string>
+    <string name="plan_cd_edit_board">Edit departure board</string>
+    <string name="plan_cd_swap">Reverse direction</string>
+    <string name="plan_cd_refresh">Refresh search</string>
+    <string name="plan_cd_advanced">Advanced Search</string>
+    <string name="plan_cd_delete">%1$s Delete</string>
+    <string name="plan_dep_suffix">%1$s dep</string>
+    <string name="plan_arr_suffix">%1$s arr</string>
+    <string name="plan_touch_foot">Tap a tile to see connections from %1$s.</string>
+    <string name="plan_current_location">Current location</string>
+    <string name="plan_no_stops">No stops found for "%1$s".</string>
+    <string name="plan_no_connections">No connections found.</string>
+    <string name="plan_direction">Direction %1$s</string>
+    <string name="plan_price_from">from CHF</string>
+    <string name="plan_platform_short">Pl. %1$s</string>
+    <string name="plan_unavailable">This connection is no longer available.</string>
+    <string name="plan_change">Change</string>
+    <string name="plan_legend">Legend</string>
+    <string name="plan_occ_low">Low to average occupancy expected</string>
+    <string name="plan_occ_medium">High occupancy expected</string>
+    <string name="plan_occ_high">Very high occupancy expected</string>
+    <string name="plan_no_guarantee">All information without guarantee</string>
+    <string name="plan_tickets_from">Tickets from CHF %1$s</string>
+    <string name="plan_information">Information</string>
+    <string name="plan_journey">Journey</string>
+    <string name="plan_add_calendar">Add to calendar</string>
+    <string name="plan_share">Share</string>
+    <string name="plan_cd_save">Save journey</string>
+    <string name="plan_cd_unsave">Delete this trip</string>
+    <string name="plan_cd_companion">Show travel companion</string>
+    <string name="plan_cd_overview">Show connections overview</string>
+    <string name="plan_cd_more">Show more options</string>
+    <string name="plan_cd_locate">Locate</string>
+    <string name="plan_cd_layers">Layers</string>
+    <string name="plan_cd_expand">Expand</string>
+    <string name="plan_cd_collapse">Collapse</string>
+    <string name="plan_dep_from_with">Departure from %1$s with</string>
+    <string name="plan_travel_time_to">Travel time %1$s to</string>
+    <string name="plan_change_in">Change in %1$s</string>
+    <string name="plan_departure">Departure</string>
+    <string name="plan_arrival">Arrival</string>
+    <string name="plan_platform">Platform</string>
+    <string name="plan_sector">Sector %1$s</string>
+    <string name="plan_no_journey_info">No journey information.</string>
+    <string name="plan_travel_date">Travel date</string>
+    <string name="plan_apply">Apply</string>
+    <string name="plan_today">Today</string>
+    <string name="plan_tomorrow">Tomorrow</string>
+    <string name="plan_attr_nf">Low-floor access</string>
+    <string name="plan_attr_bz">Business zone in 1st class</string>
+    <string name="plan_attr_fz">Family Coach with play area</string>
+    <string name="plan_attr_wr">Restaurant</string>
+    <string name="plan_attr_r">Seat reservation possible</string>
+    <string name="plan_attr_vo">Free Internet with the SBB FreeSurf app</string>
+    <string name="plan_attr_bi">Bicycle loading</string>
+    <string name="plan_attr_rs">Wheelchair space</string>
+    <string name="plan_attr_kw">Catering zone / Vending machine</string>
+    <string name="plan_attr_fa">Family zone</string>
+    <string-array name="plan_days_long">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+    <string-array name="plan_days_short">
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+    </string-array>
+    <string-array name="plan_months_short">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
+    <string name="plan_notify_me">Notify me about this train</string>
+    <string name="plan_notify_on">Notifications on</string>
+</resources>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Plan tab: plan screens, connections, connection detail, journey (owner: plan screens). -->
+<resources>
+    <string name="plan_from">De</string>
+    <string name="plan_to">À</string>
+    <string name="plan_board_from">Tableau des départs de:</string>
+    <string name="plan_board_col_from">Départ</string>
+    <string name="plan_board_col_direction">Direction</string>
+    <string name="plan_departure_boards">Tableaux des départs</string>
+    <string name="plan_touch_from">de</string>
+    <string name="plan_touch_to">à</string>
+    <string name="plan_touch_edit">modifier</string>
+    <string name="plan_powered_by">powered by</string>
+    <string name="plan_boards_title">Mes tableaux des départs</string>
+    <string name="plan_board_location">Tableau des départs depuis la position</string>
+    <string name="plan_board_all_dirs">Toutes les directions</string>
+    <string name="plan_board_add">Ajouter un tableau des départs</string>
+    <string name="plan_board_direction_opt">Direction (facultatif)</string>
+    <string name="plan_board_restrict">Limiter les moyens de transport</string>
+    <string name="plan_accept">Appliquer</string>
+    <string name="plan_mode_train">Train</string>
+    <string name="plan_mode_bus">Bus</string>
+    <string name="plan_mode_boat">Bateau</string>
+    <string name="plan_mode_tram">Tram</string>
+    <string name="plan_mode_metro">Métro</string>
+    <string name="plan_touch_edit_title">Modifier l’horaire tactile</string>
+    <string name="plan_touch_add_picture">Ajouter une image</string>
+    <string name="plan_touch_edit_tile_title">Modifier le titre</string>
+    <string name="plan_touch_delete">Supprimer la tuile</string>
+    <string name="plan_follow_train">Suivre ce train</string>
+    <string name="plan_legend_first">Voiture de 1re classe</string>
+    <string name="plan_legend_second">Voiture de 2e classe</string>
+    <string name="plan_legend_stroller">Espace poussettes</string>
+    <string name="plan_legend_wheelchair">Place pour fauteuil roulant avec toilettes accessibles</string>
+    <string name="plan_map">Carte</string>
+    <string name="plan_cd_edit_board">Modifier le tableau des départs</string>
+    <string name="plan_cd_swap">Inverser la direction</string>
+    <string name="plan_cd_refresh">Actualiser la recherche</string>
+    <string name="plan_cd_advanced">Recherche avancée</string>
+    <string name="plan_cd_delete">Supprimer %1$s</string>
+    <string name="plan_dep_suffix">%1$s dép.</string>
+    <string name="plan_arr_suffix">%1$s arr.</string>
+    <string name="plan_touch_foot">Touchez une tuile pour voir les correspondances au départ de %1$s.</string>
+    <string name="plan_current_location">Position actuelle</string>
+    <string name="plan_no_stops">Aucun arrêt trouvé pour «%1$s».</string>
+    <string name="plan_no_connections">Aucune correspondance trouvée.</string>
+    <string name="plan_direction">Direction %1$s</string>
+    <string name="plan_price_from">dès CHF</string>
+    <string name="plan_platform_short">Voie %1$s</string>
+    <string name="plan_unavailable">Cette correspondance n’est plus disponible.</string>
+    <string name="plan_change">Changement</string>
+    <string name="plan_legend">Légende</string>
+    <string name="plan_occ_low">Occupation faible à moyenne prévue</string>
+    <string name="plan_occ_medium">Occupation élevée prévue</string>
+    <string name="plan_occ_high">Occupation très élevée prévue</string>
+    <string name="plan_no_guarantee">Toutes les indications sans garantie</string>
+    <string name="plan_tickets_from">Billets dès CHF %1$s</string>
+    <string name="plan_information">Information</string>
+    <string name="plan_journey">Voyage</string>
+    <string name="plan_add_calendar">Ajouter au calendrier</string>
+    <string name="plan_share">Partager</string>
+    <string name="plan_cd_save">Enregistrer le voyage</string>
+    <string name="plan_cd_unsave">Supprimer ce voyage</string>
+    <string name="plan_cd_companion">Afficher l’accompagnateur de voyage</string>
+    <string name="plan_cd_overview">Afficher l’aperçu de la correspondance</string>
+    <string name="plan_cd_more">Afficher plus d’options</string>
+    <string name="plan_cd_locate">Localiser</string>
+    <string name="plan_cd_layers">Calques</string>
+    <string name="plan_cd_expand">Développer</string>
+    <string name="plan_cd_collapse">Réduire</string>
+    <string name="plan_dep_from_with">Départ de %1$s avec</string>
+    <string name="plan_travel_time_to">Durée du trajet %1$s jusqu’à</string>
+    <string name="plan_change_in">Changement à %1$s</string>
+    <string name="plan_departure">Départ</string>
+    <string name="plan_arrival">Arrivée</string>
+    <string name="plan_platform">Voie</string>
+    <string name="plan_sector">Secteur %1$s</string>
+    <string name="plan_no_journey_info">Aucune information sur le voyage.</string>
+    <string name="plan_travel_date">Date du voyage</string>
+    <string name="plan_apply">Appliquer</string>
+    <string name="plan_today">Aujourd’hui</string>
+    <string name="plan_tomorrow">Demain</string>
+    <string name="plan_attr_nf">Accès à plancher surbaissé</string>
+    <string name="plan_attr_bz">Zone Business en 1re classe</string>
+    <string name="plan_attr_fz">Voiture familles avec espace de jeux</string>
+    <string name="plan_attr_wr">Voiture-restaurant</string>
+    <string name="plan_attr_r">Réservation des places possible</string>
+    <string name="plan_attr_vo">Internet gratuit avec l’app SBB FreeSurf</string>
+    <string name="plan_attr_bi">Chargement des vélos par les voyageurs</string>
+    <string name="plan_attr_rs">Place pour fauteuil roulant</string>
+    <string name="plan_attr_kw">Zone de restauration / Distributeur</string>
+    <string name="plan_attr_fa">Zone familles</string>
+    <string-array name="plan_days_long">
+        <item>dimanche</item>
+        <item>lundi</item>
+        <item>mardi</item>
+        <item>mercredi</item>
+        <item>jeudi</item>
+        <item>vendredi</item>
+        <item>samedi</item>
+    </string-array>
+    <string-array name="plan_days_short">
+        <item>dim.</item>
+        <item>lun.</item>
+        <item>mar.</item>
+        <item>mer.</item>
+        <item>jeu.</item>
+        <item>ven.</item>
+        <item>sam.</item>
+    </string-array>
+    <string-array name="plan_months_short">
+        <item>janv.</item>
+        <item>févr.</item>
+        <item>mars</item>
+        <item>avr.</item>
+        <item>mai</item>
+        <item>juin</item>
+        <item>juil.</item>
+        <item>août</item>
+        <item>sept.</item>
+        <item>oct.</item>
+        <item>nov.</item>
+        <item>déc.</item>
+    </string-array>
+    <string name="plan_notify_me">M’avertir pour ce train</string>
+    <string name="plan_notify_on">Notifications activées</string>
+</resources>

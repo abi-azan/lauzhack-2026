@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Passenger side (check-in, chat, heads-up): owned by the T1 screens in screens/easyride. -->
+<resources>
+    <string name="p_stage_investigating">Abklärungen laufen</string>
+    <string name="p_stage_identified">Ursache bekannt</string>
+    <string name="p_stage_monitoring">Wird beobachtet</string>
+    <string name="p_stage_resolved">Behoben</string>
+    <string name="p_live_on_body">Wir erkennen Ihren Zug, sobald Sie einsteigen.</string>
+    <string name="p_live_paused">Für diese Reise pausiert.</string>
+    <string name="p_qr_hint">Kein Signal? Scannen Sie den QR-Code in Ihrem Wagen.</string>
+    <string name="p_searching">Ihr Zug wird gesucht …</string>
+    <string name="p_look_again">Meinen Zug suchen</string>
+    <string name="p_saved_title">Sind Sie im %1$s?</string>
+    <string name="p_saved_body">Aus Ihrer gespeicherten Reise nach %1$s.</string>
+    <string name="p_get_updates">Live-Infos erhalten</string>
+    <string name="p_qr_found">Wagen %1$s</string>
+    <string name="p_connecting">Verbindung wird hergestellt …</string>
+    <string name="p_to">nach %1$s</string>
+    <string name="p_not_on_train">Nicht in diesem Zug?</string>
+    <string name="p_er_dep">Ab:</string>
+    <string name="p_er_change">ändern</string>
+    <string name="p_er_class2">2. Klasse</string>
+    <string name="p_er_class1">1. Klasse</string>
+    <string name="p_er_travel_time">Reisezeit</string>
+    <string name="p_er_start">Start</string>
+    <string name="p_er_stop">Stopp</string>
+    <string name="p_er_swipe_start">Nach rechts wischen zum Starten</string>
+    <string name="p_er_swipe_stop">Nach links wischen zum Beenden</string>
+    <string name="p_on">Im</string>
+    <string name="p_car_inline">Wagen %1$s</string>
+    <string name="p_src_beacon">Automatisch erkannt</string>
+    <string name="p_src_qr">Eingecheckt</string>
+    <string name="p_src_saved">Aus Ihrer gespeicherten Reise</string>
+    <string name="p_chip_on_board">An Bord</string>
+    <string name="p_chip_detected">erkannt</string>
+    <string name="p_auto_title">Meinen Zug automatisch erkennen</string>
+    <string name="p_auto_off">Aus. Einschalten unter Profil › Benachrichtigungen.</string>
+    <string name="p_auto_no_perm">Die Bluetooth-Berechtigung ist ausgeschaltet.</string>
+    <string name="p_detected_car">Wagen %1$s, automatisch erkannt</string>
+    <string name="p_chip_on_board_car">An Bord, Wagen %1$s</string>
+</resources>

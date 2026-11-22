@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#767676"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1600" height="8" fill="#EB0000"/>
+
+  <!-- header -->
+  <text x="60" y="66" font-size="18" font-weight="700" fill="#EB0000" letter-spacing="2">AGENTIC DEVELOPMENT</text>
+  <text x="60" y="124" font-size="50" font-weight="700" fill="#141414">4 humans, 4 Claude Code agents, 1 board.</text>
+  <text x="60" y="168" font-size="24" fill="#5A5A5A">GitHub issue #1 is the message board: a lead agent, a task list, an owner for every module.</text>
+
+  <!-- ===== numbers ===== -->
+  <text x="60" y="272" font-size="66" font-weight="700" fill="#EB0000">218</text>
+  <text x="60" y="306" font-size="21" fill="#141414">posts on the board, 21–22 Nov</text>
+  <text x="60" y="334" font-size="18" fill="#767676">69 DONE · 27 CLAIM · 25 DECISION · 5 INTERFACE</text>
+
+  <text x="60" y="428" font-size="66" font-weight="700" fill="#EB0000">114<tspan fill="#141414" font-size="40"> of 161</tspan></text>
+  <text x="60" y="462" font-size="21" fill="#141414">commits co-authored by Claude</text>
+  <text x="60" y="490" font-size="18" fill="#767676">Co-Authored-By trailer, git log on main</text>
+
+  <text x="60" y="584" font-size="66" font-weight="700" fill="#EB0000">4</text>
+  <text x="60" y="618" font-size="21" fill="#141414">contributors, one agent each</text>
+  <text x="60" y="646" font-size="18" fill="#767676">each agent posts under its human's account</text>
+
+  <text x="60" y="740" font-size="66" font-weight="700" fill="#EB0000">30<tspan fill="#141414" font-size="40"> of 37</tspan></text>
+  <text x="60" y="774" font-size="21" fill="#141414">review findings fixed</text>
+  <text x="60" y="802" font-size="18" fill="#767676">6 open, 1 withdrawn</text>
+
+  <line x1="510" y1="215" x2="510" y2="805" stroke="#E5E5E5" stroke-width="2"/>
+
+  <!-- ===== owners ===== -->
+  <text x="560" y="232" font-size="17" font-weight="700" fill="#767676" letter-spacing="1.5">ONE OWNER PER MODULE, ONE LEAD</text>
+  <g font-size="18" fill="#141414">
+    <rect x="560" y="248" width="186" height="92" rx="10" fill="#141414"/>
+    <text x="578" y="282" font-size="22" font-weight="700" fill="#FFFFFF">lead</text>
+    <text x="578" y="310" fill="#FFFFFF">@abi-azan</text>
+    <text x="578" y="330" font-size="16" fill="#BDBDBD">task list, decisions</text>
+
+    <rect x="760" y="248" width="186" height="92" rx="10" fill="#F6F6F6"/>
+    <text x="778" y="282" font-size="22" font-weight="700">shared</text>
+    <text x="778" y="308">@cappig</text>
+    <text x="778" y="330">@MartinVrbovcan</text>
+
+    <rect x="960" y="248" width="186" height="92" rx="10" fill="#F6F6F6"/>
+    <text x="978" y="282" font-size="22" font-weight="700">server</text>
+    <text x="978" y="308">@EmilPopovic</text>
+
+    <rect x="1160" y="248" width="186" height="92" rx="10" fill="#F6F6F6"/>
+    <text x="1178" y="282" font-size="22" font-weight="700">admin</text>
+    <text x="1178" y="308">@EmilPopovic</text>
+
+    <rect x="1360" y="248" width="180" height="92" rx="10" fill="#F6F6F6"/>
+    <text x="1378" y="282" font-size="22" font-weight="700">native</text>
+    <text x="1378" y="308">@cappig</text>
+  </g>
+
+  <!-- ===== thread ===== -->
+  <text x="560" y="392" font-size="17" font-weight="700" fill="#767676" letter-spacing="1.5">ONE REAL THREAD, 22 NOV (UTC)</text>
+  <line x1="566" y1="420" x2="566" y2="628" stroke="#EB0000" stroke-width="3"/>
+  <g>
+    <circle cx="566" cy="424" r="7" fill="#EB0000"/>
+    <text x="590" y="431" font-size="21" font-weight="700" fill="#141414">03:56:13 <tspan font-weight="400" fill="#767676">agent of @EmilPopovic ·</tspan> <tspan fill="#EB0000">CLAIM</tspan></text>
+    <text x="590" y="459" font-size="20" fill="#141414">"I'm fixing the incident page's D1–D12 myself, now. … please don't edit these until my DONE."</text>
+
+    <circle cx="566" cy="494" r="7" fill="#EB0000"/>
+    <text x="590" y="501" font-size="21" font-weight="700" fill="#141414">03:56:31 <tspan font-weight="400" fill="#767676">agent of @MartinVrbovcan ·</tspan> ACK <tspan font-weight="400" fill="#767676">+18 s</tspan></text>
+    <text x="590" y="529" font-size="20" fill="#141414">"ACK, NextMoveCard.kt is yours until your DONE."</text>
+
+    <circle cx="566" cy="564" r="7" fill="#EB0000"/>
+    <text x="590" y="571" font-size="21" font-weight="700" fill="#141414">03:58:20 <tspan font-weight="400" fill="#767676">agent of @cappig ·</tspan> ACK <tspan font-weight="400" fill="#767676">+2 min</tspan></text>
+    <text x="590" y="599" font-size="20" fill="#141414">"I've stopped our redesign before it edited anything."</text>
+
+    <circle cx="566" cy="634" r="7" fill="#EB0000"/>
+    <text x="590" y="641" font-size="21" font-weight="700" fill="#141414">04:12:59 <tspan font-weight="400" fill="#767676">agent of @EmilPopovic ·</tspan> DONE <tspan font-weight="400" fill="#767676">d5a57e4, deployed</tspan></text>
+    <text x="590" y="669" font-size="20" fill="#141414">"My claim on the incident files is released."</text>
+  </g>
+
+  <!-- ===== review loop ===== -->
+  <text x="560" y="722" font-size="17" font-weight="700" fill="#767676" letter-spacing="1.5">THE REVIEW LOOP · docs/review-2026-11-22.md</text>
+  <g font-size="19" fill="#141414">
+    <rect x="560" y="740" width="210" height="64" rx="10" fill="#F6F6F6"/>
+    <text x="665" y="769" text-anchor="middle" font-weight="700">An agent reviews</text>
+    <text x="665" y="792" text-anchor="middle" font-size="16" fill="#5A5A5A">37 findings, 4 parts</text>
+
+    <rect x="808" y="740" width="210" height="64" rx="10" fill="#F6F6F6"/>
+    <text x="913" y="769" text-anchor="middle" font-weight="700">Owner per finding</text>
+    <text x="913" y="792" text-anchor="middle" font-size="16" fill="#5A5A5A">tagged on the board</text>
+
+    <rect x="1056" y="740" width="210" height="64" rx="10" fill="#F6F6F6"/>
+    <text x="1161" y="769" text-anchor="middle" font-weight="700">Lead: OK or NAY</text>
+    <text x="1161" y="792" text-anchor="middle" font-size="16" fill="#5A5A5A">per item</text>
+
+    <rect x="1304" y="740" width="236" height="64" rx="10" fill="#141414"/>
+    <text x="1422" y="769" text-anchor="middle" font-weight="700" fill="#FFFFFF">Owner fixes</text>
+    <text x="1422" y="792" text-anchor="middle" font-size="16" fill="#BDBDBD">posts DONE + commit</text>
+  </g>
+  <g stroke="#767676" stroke-width="2.5" marker-end="url(#arrow)">
+    <line x1="772" y1="772" x2="804" y2="772"/>
+    <line x1="1020" y1="772" x2="1052" y2="772"/>
+    <line x1="1268" y1="772" x2="1300" y2="772"/>
+  </g>
+
+  <!-- ===== honest note ===== -->
+  <rect x="60" y="836" width="1480" height="42" rx="8" fill="#F6F6F6"/>
+  <text x="80" y="864" font-size="19" fill="#141414"><tspan font-weight="700">Honest note:</tspan> the agents were Claude Code in the terminal, not JetBrains Air, which the brief recommends.</text>
+</svg>

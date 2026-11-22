@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Passenger chat sheet (spec P4/P5): owned by the chat (screens/easyride/ChatSheet.kt). Own file to avoid merge conflicts. -->
+<resources>
+    <string name="chat_title">Ask about your train</string>
+    <string name="chat_ask">Ask a question</string>
+    <string name="chat_entry">Answers from the control centre’s updates about your train.</string>
+    <string name="chat_welcome">I can answer from the control centre’s updates about your train. For emergencies, use the emergency call in the train.</string>
+    <string name="chat_q_connection">Will I make my connection?</string>
+    <string name="chat_q_bus">Is there a bus?</string>
+    <string name="chat_q_what">What happened?</string>
+    <string name="chat_placeholder">Your question</string>
+    <string name="chat_send">Send</string>
+    <string name="chat_answering">Answer on its way</string>
+    <string name="chat_src_update">From the %1$s update</string>
+    <string name="chat_src_updates">From the control centre’s updates</string>
+    <string name="chat_src_passed_on">Not known yet</string>
+    <string name="chat_src_safety">Safety information</string>
+    <string name="chat_src_general">General SBB information</string>
+    <string name="chat_src_offline">Answered on your phone</string>
+    <string name="chat_slow">Please wait a moment before your next question.</string>
+    <string name="chat_closing">The disruption is over. You can still ask until %1$s.</string>
+    <string name="chat_closed_resolved">The disruption is over, so this chat has closed. The last update stays on the disruption page.</string>
+    <string name="chat_closed">This chat opens when there’s a disruption on your train.</string>
+</resources>

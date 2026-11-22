@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tickets_login_title">Einloggen und profitieren.</string>
+    <string name="tickets_login_body">Ihr SwissPass kann im Portemonnaie bleiben: Weisen Sie Ihr Abo mit nur einem Klick vor. Kaufen Sie Billette schnell mit nur zwei Klicks: ohne Eingabe Ihrer Personalien oder Ihres Zahlungsmittels. Kaufen Sie Billette bequem auf Rechnung.</string>
+    <string name="tickets_login_button">Mit SwissPass Login einloggen</string>
+    <string name="tickets_none_valid">Sie haben zurzeit kein gültiges Billett.</string>
+    <string name="tickets_none_expired">Sie haben keine abgelaufenen Billette.</string>
+    <string name="tickets_half_fare">Halbtax</string>
+    <string name="tickets_valid_until">Gültig bis %1$s</string>
+    <string name="tickets_show_swisspass">SwissPass vorweisen</string>
+</resources>
