@@ -1,5 +1,7 @@
 # JetBrains pitch: live demo notes (no slides)
 
+> **Out of date since 22 Nov, 10:40.** The offline chat moment no longer works on live phones: since 83b02af a phone without a connection says "Sorry, I couldn't get an answer just now" instead of answering from `Engine.kt`. The publish dialog no longer shows "Drafted by the Koog agent…" (41f6c57). Run the pitch from [`screenplay-jetbrains.txt`](screenplay-jetbrains.txt).
+
 The whole pitch is a live demo of the running product on **four Compose Multiplatform screens**, with spoken talking points instead of slides. The criteria we answer, from [`challenges/jetbrains-kmp.md`](../../challenges/jetbrains-kmp.md):
 - 2 or more platforms;
 - a native-feeling UX;

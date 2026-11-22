@@ -1,5 +1,7 @@
 # JetBrains live moment: one Publish, four screens
 
+> **Out of date since 22 Nov, 10:40.** The offline chat moment no longer works on live phones: since 83b02af a phone without a connection says "Sorry, I couldn't get an answer just now" instead of answering from `Engine.kt`. The publish dialog no longer shows "Drafted by the Koog agent…" (41f6c57). Run the pitch from [`screenplay-jetbrains.txt`](screenplay-jetbrains.txt).
+
 About 30 seconds, right after the [JetBrains slide](jetbrains-slide.md). One click in the dashboard reaches four Compose Multiplatform screens built from the same Kotlin. Then the phone goes offline, and the shared chat engine answers on the device.
 
 `<demo address>` is the address `./demo start` (or `./demo status`) prints, for example `https://….trycloudflare.com`.

@@ -3,7 +3,7 @@ SCREENPLAY: MAIN PITCH (LAUZHACK JURY, ABOUT 3 MINUTES)
 
 The general jury sees every project, so this pitch tells the whole story once: the problem, a live demo on one phone, then how it's built. It's a live demo with no slides. The projector shows two windows side by side: the phone (mirrored) and the control-room dashboard.
 
-Facts and lines come from sbb-demo-notes.md and jetbrains-demo-notes.md. Counts were measured on 22 Nov at 10:25 local time: 304 board posts, 246 commits, 180 of them with the Claude co-author line.
+Facts and lines come from sbb-demo-notes.md and jetbrains-demo-notes.md. Counts were measured on 22 Nov at 11:00 local time: 313 board posts, 256 commits, 187 of them with the Claude co-author line. Rebuilt against main at 7f29d88.
 
 CAST
 ----
@@ -20,7 +20,7 @@ BEFORE THE LIGHTS GO UP
 - The phone runs the latest main, is unmuted with Do Not Disturb off, and is checked in to IR 90 1734 as phone 1:
   adb shell am start -n railstatus.mobile/.MainActivity --es api <A> --es persona supersaver --es beacon fake --es train IR90-1734 --es car 7 --es passive on --ez checkin true
 - The phone shows Trips; the dashboard shows Incidents, in the light theme.
-- Either draft engine works. Leave it as the last pitch left it.
+- ./demo koog on: scene 6 says the draft is a Koog agent. (Live was on koog at 11:00; the SBB pitch turns it off, so check after it.)
 
 ------------------------------------------------------------
 
@@ -90,7 +90,7 @@ OPERATOR: switches the dashboard to Passenger questions.
 [The question appears there, grouped with everyone else's.]
 
 PRESENTER:
-    "The chat answers from what SBB published and from the live Swiss journey planner, and it's told never to invent a time. If the model is slow or fails, our rule engine answers instead. And every question lands in the control centre, grouped. Three hundred people asking about buses become one line, so the next update answers all of them at once."
+    "The chat answers from what SBB published and from the live Swiss journey planner, and it's told never to invent a time. If it's slow, a second model tries, and if that fails too, it says sorry instead of guessing. And every question lands in the control centre, grouped. Three hundred people asking about buses become one line, so the next update answers all of them at once."
 
 SCENE 5: OVER (2:05 – 2:20)
 ---------------------------
@@ -108,7 +108,7 @@ SCENE 6: HOW IT'S BUILT (2:20 – 2:50)
 
 PRESENTER:
     "Everything you saw is one Kotlin Multiplatform codebase. The same code runs the server, the Android app, the app in the browser, and the dashboard on the web and the desktop. The passenger app is 94 percent shared code. The AI draft is a Koog agent whose tools are our own functions, and the next-move advice is plain arithmetic on SBB's published facts and the real journey planner, never model output.
-    We built it as four people with four AI coding agents, coordinating on one GitHub issue: 304 posts, 246 commits, claims, reviews and a lead, like a real team."
+    We built it as four people with four AI coding agents, coordinating on one GitHub issue: over 300 posts, 256 commits, claims, reviews and a lead, like a real team."
 
 SCENE 7: CLOSE (2:50 – 3:00)
 ----------------------------
@@ -129,7 +129,7 @@ IF SOMETHING BREAKS
 LIKELY JURY QUESTIONS
 ---------------------
 
-- "How does the phone know which train I'm on?": "Check-in by a Bluetooth beacon in each car, or the QR code in the car, like EasyRide. On stage the beacon is simulated; the scanning is real."
-- "What if the AI is wrong?": "The AI only drafts, and a human publishes. The chat model only gets SBB's published facts and the journey planner's results, it's told never to invent times, and if it fails or is slow, our deterministic rule engine answers instead."
+- "How does the phone know which train I'm on?": "Each car has a Bluetooth beacon that sends its name. The app listens in the background about every 20 seconds, takes the strongest signal, and checks you in to that train and car: no tap, no login. Or scan the QR code in the car, like EasyRide. On stage the beacon is simulated; the scanning is real."
+- "What if the AI is wrong?": "The AI only drafts, and a human publishes. The chat model only gets SBB's published facts and the journey planner's results, it's told never to invent times, and if both our models fail, it says sorry rather than guess."
 - "Is this real data?": "The 17 September messages are SBB's own logs, replayed. The alternative routes come live from the Swiss journey planner (OJP)."
 - "Would SBB have to replace anything?": "No. It sits between the ticker the control centre already writes and the channels SBB already uses."

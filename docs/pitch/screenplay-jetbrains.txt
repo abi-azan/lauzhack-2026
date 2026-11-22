@@ -9,16 +9,23 @@ A live demo on four Compose Multiplatform screens, with no slides. It answers th
 - the agentic process;
 - the presentation.
 
-The setup details and fallbacks are in jetbrains-demo-notes.md and jetbrains-live.md. This file is the run of the show, line by line.
+The setup details and fallbacks are in jetbrains-demo-notes.md and jetbrains-live.md. This file is the run of the show, line by line. Rebuilt on 22 Nov, 11:00, against main at 7f29d88.
 
-What changed since those notes: the operator now sends the beats with Send beat N in the dashboard's Live demo bar (c119bed), not with Enter in a terminal. The publish dialog shows one line, "Drafted by the Koog agent from N internal messages", so speak the tools rather than point at them.
+WHAT CHANGED SINCE THE LAST VERSION
+-----------------------------------
+
+- Koog: still in use, and the live server runs it now (GET /api/control/draft-engine answers "koog"). It is the admin's AI draft: a Koog agent with six tools, on the server JVM. It needs the network: every step is a model call through OpenRouter. Koog never runs on the phone or in the browser, so it cannot answer anything offline.
+- The offline chat moment is cut. It never was Koog: it was the shared rules engine (Engine.kt) answering on the phone. Since Emil's 83b02af (10:40), a live phone that can't reach the server says "Sorry, I couldn't get an answer just now. Please ask again." instead. That's the honest choice for a timeout, but in airplane mode the moment no longer happens. Scene 5 is now the question loop: the phone asks, the dashboard groups it, the Koog agent reads the group and the next update answers it.
+- The publish dialog no longer says "Drafted by the Koog agent…" (41f6c57, Matej's call: English only, no notes). Nothing on screen says Koog, so the presenter names the tools. Optional proof: a fifth window with the server log (see THE SET).
+- The draft is usually there the moment the dialog opens: the server drafts ahead about 2.5 s after the ticker settles (DraftDesk).
+- The passenger chat is a real model now (Claude Sonnet 5.5 with the Swiss journey planner, OJP), not Koog. It answers in the language the passenger wrote in (fc67555).
 
 CAST
 ----
 
 - PRESENTER: Albert / standing; all talking points
 - OPERATOR: Emil / the Live demo bar in the web dashboard, and Publish in the desktop dashboard
-- PHONE: Matej (@cappig) / the Android phone, mirrored with scrcpy --stay-awake over USB; airplane mode; the chat
+- PHONE: Matej (@cappig) / the Android phone, mirrored with scrcpy --stay-awake over USB; the chat
 - BACKUP: Martin / the rehearsal recording; smoke.mjs <A> on standby
 
 THE SET (ON THE PROJECTOR, SIDE BY SIDE)
@@ -28,14 +35,17 @@ THE SET (ON THE PROJECTOR, SIDE BY SIDE)
 2. The passenger app in a narrow browser window: <A>/#/checkin/IR90-1734?car=7, wasm.
 3. The web dashboard <A>/admin/, wasm, with the Live demo bar at the bottom.
 4. The desktop dashboard API_URL=<A> ./gradlew :admin:run, on the JVM. Start it well before, since its first run compiles.
+5. Optional, only if it fits: a small terminal on Emil's laptop with the server log, filtered to the agent:
+   tail -f sbb-prototype/kmp/.demo/server.log | grep "Koog draft"
+   Each draft prints "Koog draft for inc-…: tools [ticker_events, affected_trains, …]". That's the one place the agent's work is visible. The path holds when the server runs as a service (./demo install); otherwise skip this window.
 
 BEFORE THE LIGHTS GO UP
 -----------------------
 
 - The pre-stage checklist in sbb-demo-notes.md: ./demo test --reset --force at 9/9, then Start over in the bar.
-- ./demo koog on. This pitch shows the Koog agent; the SBB pitch turns it off.
+- ./demo koog on. This pitch shows the Koog agent; the SBB pitch turns it off. (Live was already on koog at 11:00.)
 - The phone and the web app are checked in to IR 90 1734. Both dashboards count 2 on board.
-- Every screen in English and the light theme. The phone is unmuted with Do Not Disturb off.
+- Every screen in English and the light theme. The phone is unmuted, Do Not Disturb off, Wi-Fi on. No airplane mode in this pitch.
 
 ------------------------------------------------------------
 
@@ -64,17 +74,20 @@ PRESENTER: "A real message from SBB's event log opens an incident by itself."
 
 PRESENTER: "Nobody typed anything. That's the safety net, and it's the same model classes on all four screens."
 
-SCENE 3: THE KOOG AGENT (1:00 – 1:30)
+SCENE 3: THE KOOG AGENT (1:00 – 1:35)
 -------------------------------------
 
-OPERATOR: Send beat 2. Then, in the desktop dashboard: Publish a status update. The draft fills in, preselected "from the ticker (AI)".
+OPERATOR: Send beat 2. Waits until the bar stops saying "Sending…". Then, in the desktop dashboard: Publish a status update.
 
-[On screen: "Drafted by the Koog agent from N internal messages. Check it before publishing."]
+[The dialog opens with the draft already in the boxes: Title, Message, Alternatives, On board. On the right, "What passengers will see". If it says "Drafting…", the presenter keeps talking; it fills within about 20 s.]
 
 PRESENTER:
-    "The control centre writes internal shorthand, mostly French. The update you see was drafted by a Koog agent defined in commonMain. Its tools are our own shared functions: the ticker, what's published, the affected trains, our next-move function, and what passengers are asking. So the AI can only draft from facts our code computes. A human reads it and publishes."
+    "The control centre writes internal shorthand, mostly French. While those messages came in, a Koog agent drafted this update. The agent is defined in our shared Kotlin, and it runs on the server.
+    It has six tools, and every one is a function we wrote: the ticker events, the affected trains, what's already published, the passenger's next move, the routes around the closure, and what passengers are asking. So it can only draft from facts our code computes. It writes all four languages at once. A human reads it and publishes."
 
-SCENE 4: MOMENT 1, ONE CLICK AND FOUR SCREENS (1:30 – 1:40)
+[If the log window is up, point at it: "There's the agent's trail: the tools it called, in order."]
+
+SCENE 4: MOMENT 1, ONE CLICK AND FOUR SCREENS (1:35 – 1:45)
 -----------------------------------------------------------
 
 OPERATOR: Publish in the desktop dashboard.
@@ -83,23 +96,24 @@ OPERATOR: Publish in the desktop dashboard.
 
 PRESENTER: "One click. The same update, the same model classes, on all four screens."
 
-SCENE 5: MOMENT 2, OFFLINE ON THE PHONE (1:40 – 2:05)
------------------------------------------------------
+SCENE 5: MOMENT 2, THE AGENT READS THE QUESTIONS (1:45 – 2:25)
+--------------------------------------------------------------
 
-PHONE: swipes down → Airplane mode, and checks that Wi-Fi is off too.
+PHONE: taps the yellow band → Ask a question → types "Is there a bus?"
 
-PRESENTER: "Now the phone loses its connection, like in a tunnel."
+[After 5–9 seconds: an answer from what SBB published, plus a route from the journey planner.]
 
-PHONE: Ask a question → the quick reply "Will I make my connection?"
-
-[On screen: an answer built from the update the phone already has, and under it "Answered on your phone · not passed on".]
+OPERATOR: in the web dashboard, Passenger questions. The phone's question is there as a group, "Other ways to travel" (or "Other ways to <station>"), with a count.
 
 PRESENTER:
-    "The question can't reach our server. So the same Engine.kt that answers on the server answers here, on the phone, from what SBB already published. And it's honest that nobody in the control room saw the question."
+    "Every question lands in the control room, sorted into groups by the same shared rules engine we ported from TypeScript. Three hundred people asking about buses become one line."
 
-PHONE: Airplane mode off. The phone reconnects within about 10 s.
+OPERATOR: Send beat 3 (the buses are ordered). Then Publish a status update in the desktop dashboard. Checks Alternatives mentions the buses → Publish.
 
-SCENE 6: MOMENT 3, SHARED LOGIC IN THE BROWSER (2:05 – 2:20)
+PRESENTER:
+    "That's the sixth tool. The agent saw 'Other ways to travel: one passenger', a topic and a count, never the passenger's words, and this update answers it. The phone's next move now puts SBB's buses first."
+
+SCENE 6: MOMENT 3, SHARED LOGIC IN THE BROWSER (2:25 – 2:40)
 ------------------------------------------------------------
 
 OPERATOR: in the web dashboard: New incident → picks Renens VD → Allaman → the affected trains appear instantly → Cancel.
@@ -107,46 +121,46 @@ OPERATOR: in the web dashboard: New incident → picks Renens VD → Allaman →
 PRESENTER:
     "Those trains appear instantly. That's the shared affectedTrains() compiled to WebAssembly, in the browser. The server ran the same function on the JVM when the ticker came in."
 
-SCENE 7: NATIVE FEEL (2:20 – 2:30)
+SCENE 7: NATIVE FEEL (2:40 – 2:50)
 ----------------------------------
 
 OPERATOR: the dark toggle in the dashboard header. PHONE: dark mode in the app's Profile.
 
 PRESENTER:
-    "Dark and light, with the same SBB design tokens in both apps. The app speaks German, French, Italian and English, updates included."
+    "Dark and light, with the same SBB design tokens in both apps. The app speaks German, French, Italian and English, updates included. If the operator edits the English, the server translates the edit into the other three when he publishes."
 
-SCENE 8: RESOLVE (2:30 – 2:40)
+SCENE 8: RESOLVE (2:50 – 3:00)
 ------------------------------
 
 OPERATOR: Send beat 4 → Resolve → Resolve.
 
 [All four screens show "Resolved".]
 
-SCENE 9: WHAT'S SHARED (2:40 – 3:15)
+SCENE 9: WHAT'S SHARED (3:00 – 3:30)
 ------------------------------------
 
 PRESENTER:
     "We measured it. Counting the shared module it compiles in, the passenger app is 94 percent common code: about 16,600 lines in commonMain, against 870 for Android and under 200 for the web. The dashboard is 98.5 percent common.
-    What's shared is the logic that matters: the model, train matching, the update templates, nextMove(), and the chat's rules engine. We ported that engine from TypeScript and proved it against 2,940 golden answers from the old one.
-    Only what needs the OS stays per platform: Bluetooth check-in, the foreground service and notifications on Android, browser notifications on the web. That's three expect functions. And the same tests run unchanged on the JVM and as wasm in headless Chrome: 122 runs, zero failures."
+    What's shared is the logic that matters: the model, train matching, the update templates, nextMove(), the chat's rules engine, and the Koog agent's definition and tools. We ported the rules engine from TypeScript and proved it against 2,940 golden answers from the old one.
+    Only what needs the OS stays per platform: Bluetooth check-in, the foreground service and notifications on Android, browser notifications on the web. That's three expect functions. And the same tests run unchanged on the JVM and as wasm in headless Chrome."
 
-SCENE 10: THE DETERMINISTIC CORE (3:15 – 3:30)
+SCENE 10: THE DETERMINISTIC CORE (3:30 – 3:45)
 ----------------------------------------------
 
 PRESENTER:
-    "The card a passenger sees is never model output. nextMove() is plain arithmetic on SBB's published facts and the real journey planner. The Koog agent can read it, so the draft never contradicts the card, but a human publishes every word."
+    "The card a passenger sees is never model output. nextMove() is plain arithmetic on SBB's published facts and the real journey planner. The Koog agent reads that same function as a tool, so the draft never contradicts the card, but a human publishes every word."
 
-SCENE 11: FOUR PEOPLE, FOUR AGENTS (3:30 – 3:55)
+SCENE 11: FOUR PEOPLE, FOUR AGENTS (3:45 – 4:05)
 ------------------------------------------------
 
 PRESENTER:
-    "Four of us, each with a Claude Code agent, on one repo at the same time. They coordinated on a GitHub issue as a message board: 304 posts. Every module has an owner. An agent posts a CLAIM before it touches files, the owners ACK, and it posts DONE when it's pushed. One agent is the lead and decides. 180 of our 246 commits carry the Claude co-author line.
+    "Four of us, each with a Claude Code agent, on one repo at the same time. They coordinated on a GitHub issue as a message board: over 300 posts. Every module has an owner. An agent posts a CLAIM before it touches files, the owners ACK, and it posts DONE when it's pushed. One agent is the lead and decides. 187 of our 256 commits carry the Claude co-author line.
     A real thread from tonight: one agent found the chat contradicted the next-move card, fixed it on a branch with tests, the owner's agent reviewed it, the lead approved: six minutes.
     To be clear: we used Claude Code in the terminal, not JetBrains Air."
 
 [If Emil's Air recording, J2, exists: play 10 seconds and say "We also ran Junie and Claude Code side by side in Air on one task, and kept the better result."]
 
-SCENE 12: CLOSE (3:55 – 4:00)
+SCENE 12: CLOSE (4:05 – 4:10)
 -----------------------------
 
 PRESENTER: "SBB: 95 minutes. Us: 15 seconds. One codebase, five binaries. Thank you."
@@ -156,20 +170,35 @@ PRESENTER: "SBB: 95 minutes. Us: 15 seconds. One codebase, five binaries. Thank 
 IF THE SLOT IS 3 MINUTES
 ------------------------
 
-Cut scene 6 (Moment 3) and scene 7. Shorten scene 3 to one sentence: "The draft is a Koog agent in commonMain whose tools are our own functions."
+Cut scene 6 (Moment 3) and scene 7. In scene 5, skip beat 3 and the second publish: the phone asks, the dashboard shows the group, and the presenter says "the agent's sixth tool reads these groups for the next update". Shorten scene 3 to: "The draft is a Koog agent in our shared Kotlin whose six tools are our own functions."
 
 DON'T CLAIM
 -----------
 
-- That the Koog agent runs in the browser. Its wasm target only compiles.
+- That Koog works offline, on the phone, or in the browser. It runs on the server JVM and calls the model over the network at every step. Its wasm target only compiles.
+- That the passenger chat is the Koog agent. The chat is a separate model call (Claude Sonnet 5.5 with the journey planner); Koog is the admin's draft.
+- That the phone answers offline. Live, a phone without a connection now says "Sorry, I couldn't get an answer just now" (83b02af). The rules engine on the phone only answers in the scripted, serverless mode.
+- That the dashboard shows the agent's tools. It did until 41f6c57; now only the optional log window does.
 - iOS. "One more target and three actual functions; no Xcode on our laptops."
-- That nextMove() runs on the phone. The server computes it; the chat engine does run on the phone offline.
+- That nextMove() runs on the phone. The server computes it.
 - That the Bluetooth beacon on stage is real. It's simulated; the scanning code is real.
 
 IF SOMETHING BREAKS
 -------------------
 
 The fallbacks are in jetbrains-demo-notes.md. In short:
-- If Koog fails, the dialog falls back to the single-call draft; speak the Koog point.
+- If Koog fails or takes over 60 s, the server falls back to the single-call draft on its own; the dialog looks the same. Speak the Koog point anyway.
+- If the AI fails entirely, a standard template fills the boxes. OPERATOR publishes that; PRESENTER: "And if the AI is down, the control room still has a template."
+- If the chat answers "Sorry…", PHONE asks again once. If it fails again, skip to the dashboard's Passenger questions: the question is still grouped there.
 - If a screen is dead, point at its twin.
 - If the demo is dead, BACKUP plays the recording.
+
+ONLY IF THE OFFLINE FALLBACK COMES BACK
+---------------------------------------
+
+The old Moment 2 needs the phone to answer from the rules engine when it has no network (and still say "Sorry" on a timeout). That's a change in Live.kt and ChatStore.kt, Matej's and Emil's files, and it's Albert's call before the freeze. If it lands, put this back after scene 4:
+
+PHONE: Airplane mode on, Wi-Fi off. Ask a question → "Will I make my connection?"
+[On screen: an answer from the update the phone already has, and "Answered on your phone · not passed on".]
+PRESENTER: "The question can't reach our server, so the same Engine.kt that sorts questions on the server answers here, on the phone, from what SBB already published. That's the rules engine, not the AI: the AI needs the network."
+PHONE: Airplane mode off.

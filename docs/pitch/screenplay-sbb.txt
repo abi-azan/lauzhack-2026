@@ -1,9 +1,17 @@
-SCREENPLAY: SBB PITCH (ABOUT 5–6 MINUTES)
-=========================================
+SCREENPLAY: SBB PITCH (ABOUT 6 MINUTES)
+=======================================
 
-A live demo with no slides and no hook. Three judges each hold one of our phones, each one a different passenger on the evening of 17 September. One operator sends SBB's real disruption in four beats from the dashboard's Live demo bar, and the presenter walks the judges through what their phone does at each beat.
+A live demo with no slides and no hook. Three judges each hold one of our phones, each one a different passenger on the evening of 17 September. One operator sends SBB's real disruption in four beats from the dashboard's Live demo bar, and the presenter walks the judges through what their phone does at each beat, and what the control room's AI does behind it.
 
-Setup, the adb lines and the fallbacks are in sbb-demo-notes.md. This file is the run of the show, line by line. The screens are quoted as a real phone showed them in rehearsal.
+Setup, the adb lines and the fallbacks are in sbb-demo-notes.md. This file is the run of the show, line by line. The screens are quoted as a real phone showed them in rehearsal. Rebuilt on 22 Nov, 11:00, against main at 7f29d88.
+
+WHAT CHANGED SINCE THE LAST VERSION
+-----------------------------------
+
+- New in scene 1: how the phone knows which train you're on (Bluetooth check-in).
+- New in scene 3: a walk through the publish dialog and the AI behind it.
+- The chat no longer falls back to the rules when the model is slow (83b02af). It waits up to 60 s, tries a second model, and if both fail it says "Sorry, I couldn't get an answer just now. Please ask again." It answers in the language the passenger wrote in (fc67555).
+- The publish dialog is English only and has no draft note (41f6c57). An operator's edit is translated into German, French and Italian when he publishes (86f29c4).
 
 CAST
 ----
@@ -21,9 +29,9 @@ BEFORE THE JUDGES ARRIVE
 
 - Flash each phone with one command (cappig, f9ca0e1), from sbb-prototype/native after ./gradlew :composeApp:assembleDebug: scripts/flash-demo-phone.sh <serial> supersaver (phone 1), ticket (phone 2), ga (phone 3). It installs, clears data, grants every permission, keeps the screen on over USB, checks the phone in and warns if Do Not Disturb is on.
 - The pre-stage checklist in sbb-demo-notes.md:
-  - ./demo koog off: this pitch uses the single-call draft;
+  - ./demo koog off: this pitch uses the single-call draft (live was on koog at 11:00, so this step matters);
   - ./demo test --reset --force at 9/9;
-  - Start over in the Live demo bar;
+  - Start over in the Live demo bar (it also clears the stray incident cappig's runner opened at 10:45);
   - phone 3's follow line.
 - The dashboard counts phones 1 and 2 on IR 90 1734.
 - The phones: unmuted, Do Not Disturb off, screen timeout 10 minutes. Phones 1 and 2 on Trips, phone 3 on Plan. All three locked, face up.
@@ -31,8 +39,8 @@ BEFORE THE JUDGES ARRIVE
 
 ------------------------------------------------------------
 
-SCENE 1: OPENING (0:00 – 0:30)
-------------------------------
+SCENE 1: OPENING, AND HOW YOUR PHONE KNOWS (0:00 – 0:55)
+--------------------------------------------------------
 
 PRESENTER:
     "We took an already existing product and made it even more user friendly."
@@ -45,7 +53,18 @@ PRESENTER:
     "Each of you is a different passenger on the evening of 17 September. You're going to Lausanne. You're going on to Sion. And you're still waiting on the platform in Lausanne. Keep your phone locked for now.
     We only changed the places where SBB already talks about disruptions: the notification, a yellow band on top of every tab, and the Information page."
 
-SCENE 2: FIRE ON THE LINE (0:30 – 1:20)
+PRESENTER (to JUDGES 1 and 2):
+    "First: how does your phone know you're on this train? You didn't tap anything.
+    Every car has a small Bluetooth beacon that sends out its name, like 'IR90-1734-Car7'. The app listens in the background, about every 20 seconds, for a few seconds at a time, and takes the strongest signal. That's the car you're sitting in. It checks you in to that train and car.
+    It sends only the train, the car, your language and where you're going. No name, no login. If it ever picks the wrong train, 'Not on this train?' undoes it. No beacon in the car? Scan the QR code on the wall, like EasyRide today."
+
+PRESENTER (to JUDGE 3):
+    "You're not on board yet, so no beacon. You tapped the bell on your departure in Plan, and that follows the train. You hear what the people on board hear, with advice for someone still on the platform."
+
+PRESENTER:
+    "There's no train in this room, so on stage the beacon is simulated. The scanning code is the real one, the same that finds a real beacon."
+
+SCENE 2: FIRE ON THE LINE (0:55 – 1:45)
 ---------------------------------------
 
 PRESENTER: "Emil, the first messages, please."
@@ -54,7 +73,10 @@ OPERATOR: Send beat 1.
 
 [The projector: 2 messages from SBB's event log, a power failure and an overhead-line fault. An incident opens by itself, "not published", with a countdown. The bar says "Now: The phones buzz in about 15 s".]
 
-[The presenter says nothing for about 15 seconds.]
+PRESENTER (pointing at the projector, then silent):
+    "The system matched those messages to the trains on that line, and it knows two of you are on one of them."
+
+[About 15 seconds of silence.]
 
 [All three phones buzz.]
 
@@ -69,22 +91,36 @@ PRESENTER: "Tap the band."
 The Information page: a yellow header "Interrupted service: Lausanne – Genève, since HH:MM", then Your trip, then SBB's Information: "Nothing more is known yet. Further information at approximately HH:MM."
 
 PRESENTER:
-    "Nobody in the control centre has typed anything yet. At first nobody knows what happened, not even the staff, and the passenger still isn't left alone. There's no dead end: you always know when you'll hear more."
+    "Nobody in the control centre has typed anything yet. That's the safety net: if nobody publishes within 15 seconds, the system tells the passengers itself. No AI in this step, just a rule. At first nobody knows what happened, not even the staff, and the passenger still isn't left alone. You always know when you'll hear more."
 
-SCENE 3: CHAOS IN THE CONTROL CENTRE (1:20 – 2:40)
---------------------------------------------------
+SCENE 3: THE CONTROL ROOM'S AI (1:45 – 3:20)
+--------------------------------------------
 
 OPERATOR: Send beat 2.
 
 [The ticker fills with 7 real control-centre messages, mostly French shorthand: trains turning back, the overhead line down, the fire brigade on site.]
 
 PRESENTER (pointing at the projector):
-    "This is what the control centre writes, in internal shorthand. Passengers can't read that."
+    "This is what the control centre writes, in internal shorthand. Passengers can't read that, and the staff have no time to rewrite it."
 
-OPERATOR: waits until the bar stops saying "Sending…" → Publish a status update. "Drafting…", then the AI draft fills in. Reads it for two seconds. → Publish.
+OPERATOR: waits until the bar stops saying "Sending…" → Publish a status update.
+
+[The dialog opens with the draft already filled in. Left: Title, Message, Alternatives, On board. Right: "What passengers will see", the phone's view of this update. If it says "Drafting…", the presenter keeps talking; it fills in within about 15 s.]
+
+PRESENTER (walking along the dialog on the projector):
+    "This is the AI's draft. Four things happened before Emil even clicked.
+    One: before anything left our server, we stripped staff names, phone numbers and IDs out of that ticker. The model never sees them.
+    Two: it turned the shorthand into a passenger update, in German, French, Italian and English at once.
+    Three: it read what passengers are already asking in the chat, as topics and counts, never their words, so the update answers them.
+    Four: it drafted ahead. The moment the ticker went quiet, the draft started, so Emil doesn't wait.
+    And on the way out, we check the draft again: anything that looks like a phone number or a name is replaced before Emil sees it."
+
+[OPERATOR changes one word in the English message, to show it's editable.]
 
 PRESENTER:
-    "The AI drafts from the internal ticker, with staff names and phone numbers removed first. A human checks every word."
+    "What the AI doesn't do is publish. Emil reads it, changes what he wants, in English, and we translate his edit into the other three languages when he publishes. If the AI is down, a standard text fills these boxes instead, so the control room is never stuck."
+
+OPERATOR: → Publish.
 
 [The phones update in place, with no second buzz: the cause, overhead line damage and a fire, in plain English.]
 
@@ -100,9 +136,9 @@ PRESENTER (to JUDGE 3): "And you: 'Wait at the station for now'. You're not on t
 Optional, only if it was red in rehearsal. PRESENTER: "Open Plan and tap Map." The closed section, Allaman – Renens VD, framed in dashed red.
 
 PRESENTER:
-    "Same update, three passengers, three next moves. When SBB doesn't know how long yet, we don't guess. And official and our suggestion never mix."
+    "Same update, three passengers, three next moves. That advice is not AI: it's computed from SBB's published facts and the real timetable. When SBB doesn't know how long yet, we don't guess. And official and our suggestion never mix."
 
-SCENE 4: THE JUDGES ASK (2:40 – 3:40)
+SCENE 4: THE JUDGES ASK (3:20 – 4:20)
 -------------------------------------
 
 PRESENTER: "Back on the Information page, tap Ask a question."
@@ -111,44 +147,52 @@ PRESENTER: "Back on the Information page, tap Ask a question."
 - JUDGE 2 taps "Will I make my connection?": an honest "can't say yet", with concrete backups.
 - JUDGE 3 taps "What happened?": the cause, from the published update.
 
-[Any language works. Read the answers off the phones: the routes come live from the journey planner.]
+[Any language works: the answer comes back in the language the judge wrote in. Read the answers off the phones: the routes come live from the journey planner.]
 
 PRESENTER (to JUDGE 2): "The chat tells you what SBB knows. Your trip shows our backup plan."
 
-OPERATOR: opens Passenger questions on the projector. The judges' questions appear, grouped by topic.
+PRESENTER:
+    "That's a language model, but a tightly held one. It gets only what SBB published for this train, and it can ask the Swiss journey planner for real connections. It's told never to invent a time. If it's slow, a second model tries; if that fails too, it says sorry and asks you to try again. It never guesses."
+
+OPERATOR: opens Passenger questions on the projector. The judges' questions appear as groups, each with a count; urgent ones come first.
 
 PRESENTER:
-    "Ask it anything about your trip. It answers from what SBB published and from the live journey planner, and it's told never to invent a time; if it's ever slow, our rule engine answers instead. And your questions land in the control centre, grouped, so the next update can answer everyone at once."
+    "And your questions land here, in the control centre. Each one is sorted into a group: 'Other ways to travel', 'Connections', 'What happened'. Three hundred people asking about buses become one line with a count. That list is what the AI reads for the next draft."
 
-SCENE 5: BUSES ON THE WAY (3:40 – 4:40)
+SCENE 5: BUSES ON THE WAY (4:20 – 5:15)
 ---------------------------------------
 
 OPERATOR: Send beat 3.
 
 [The ticker: 14 buses ordered, the replacement-bus notice.]
 
-OPERATOR: Publish a status update → checks that Alternatives includes the buses (the draft has seen the judges' questions, so it should answer "Is there a bus?") → Publish.
+OPERATOR: Publish a status update → checks that Alternatives includes the buses → Publish.
+
+PRESENTER (while Emil checks):
+    "The draft has seen your questions. JUDGE 1 asked how to get somewhere else, so this update leads with the buses."
 
 Phones 1 and 2: Your trip's headline becomes "Follow SBB's advice". The buses come first, tagged "Confirmed by SBB" · "Recommended", then our route, then "Stay on this train". The band shows the new title.
 
 PRESENTER:
-    "Look at Your trip again. SBB's own advice now comes first, and our suggestion steps back. And the question you asked a minute ago, 'Is there a bus?', now has SBB's own answer."
+    "Look at Your trip again. SBB's own advice now comes first, and our suggestion steps back. The question you asked a minute ago now has SBB's own answer."
 
 PRESENTER (to JUDGE 3):
     "You still see 'Wait at the station'. The buses are for the closed section, and your train still comes through Lausanne."
 
-SCENE 6: LINE OPEN AGAIN (4:40 – 5:20)
+SCENE 6: LINE OPEN AGAIN (5:15 – 5:45)
 --------------------------------------
 
 OPERATOR: Send beat 4 → Resolve → checks the AI's all-clear → Resolve.
 
 [The phones: "Resolved HH:MM" and the all-clear text; the yellow band disappears from every tab; the notification updates one last time; the chat closes kindly.]
 
-SCENE 7: CLOSE (5:20 – 5:40)
+PRESENTER: "Even the all-clear was drafted from the ticker, and checked by a human."
+
+SCENE 7: CLOSE (5:45 – 6:05)
 ----------------------------
 
 PRESENTER:
-    "On 17 September, the first public travel advice came after 95 minutes, and the bus notice after 160. Here, everyone checked in knew within 15 seconds, and got their own next move with every update."
+    "On 17 September, the first public travel advice came after 95 minutes, and the bus notice after 160. Here, everyone checked in knew within 15 seconds, and got their own next move with every update. The AI does the writing; the people in the control room keep the decisions."
 
 [Collects the phones.]
 
@@ -157,13 +201,32 @@ PRESENTER:
 TO SAVE TIME
 ------------
 
-Cut the map moment first, then JUDGE 3's chat question, then scene 5. Never cut the safety net (scene 2) or the close.
+Cut in this order:
+1. The map moment.
+2. JUDGE 3's chat question.
+3. In scene 1, the QR and "Not on this train?" sentences (keep the beacon).
+4. In scene 3, the operator's one-word edit (keep the sentence about it).
+5. Scene 5.
+Never cut the safety net (scene 2), the AI walk-through in scene 3, or the close.
 
 LIKELY QUESTIONS
 ----------------
 
-- "How does it know I'm on that train?": "A Bluetooth beacon in each car, or the car's QR code, like EasyRide. On stage the beacon is simulated; the scanning code is real."
+- "What if two trains are next to each other in the station?": "The app takes the strongest beacon, and checks again every 20 seconds, so it settles on the train you're in. If it's still wrong, 'Not on this train?' undoes it and pauses automatic check-in for 10 minutes."
+- "Does it drain the battery?": "It scans a few seconds at a time, about every 20 seconds, with Android's own Bluetooth scanner. We haven't measured battery use on a full journey."
+- "What does SBB need to install?": "A beacon per car, or just the QR code that EasyRide cars already have. The rest is software."
 - "What if the AI draft is wrong?": "It's a draft. A human checks and publishes every word. The passenger's advice is computed from the published facts and the real timetable, not written by the AI."
+- "Does the AI see personal data?": "No. Staff names, phone numbers and IDs are removed before the ticker leaves our server, and the draft is checked again on the way out. From the chat, the AI sees only topics and counts, never what a passenger typed."
+- "Which AI?": "The draft is one structured call to a model through OpenRouter; we can also run it as a Koog agent that calls our own functions as tools. The chat is Claude Sonnet with the Swiss journey planner."
 - "Where do the routes come from?": "Live from OJP, the Swiss journey planner, at the real hour, so the route on your phone is what OJP gives right now."
 - "Does SBB have to replace anything?": "No. We sit between the ticker the control centre already writes and the channels SBB already uses: the app, push, the status page."
-- "Other languages?": "Every update is written in German, French, Italian and English, and the app follows the phone's language."
+- "Other languages?": "Every update is written in German, French, Italian and English, and the app follows the phone's language. If the operator edits, his edit is translated too."
+
+DON'T CLAIM
+-----------
+
+- That the beacon on stage is real. It's simulated; the scanning code is real.
+- Battery numbers. We haven't measured them.
+- That the chat falls back to rules. Since 83b02af it says sorry instead.
+- That the chat "never makes things up". It's told never to invent a time; it has no separate fact check.
+- That the advice on Your trip is AI. It's computed, not generated.

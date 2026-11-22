@@ -142,7 +142,7 @@ The pace is the presenter's. A full run is about 5–6 minutes with the judges t
 
 ### 3. The judges ask (no laptop action)
 - **Guide:** "Back on the Information page, tap **Ask a question**." Suggest these:
-  - **The chat is a real model now** (Emil, `SmartChat.kt`): Claude Sonnet 5.5 with the published facts and OJP journey planning. It takes 5–9 s per answer, and the app shows its busy state. If the model fails or runs past 13.5 s, the old rule engine answers.
+  - **The chat is a real model now** (Emil, `SmartChat.kt`): Claude Sonnet 5.5 with the published facts and OJP journey planning. It takes 5–9 s per answer, and the app shows its busy state. Since 83b02af it no longer falls back to the rules: the app waits up to 60 s, Haiku 5.5 tries after Sonnet, and if both fail the phone says "Sorry, I couldn't get an answer just now. Please ask again." It answers in the passenger's language (fc67555).
   - **Phone 1:** type **"How do I get to Basel?"**: a route around the closure with real times, plus the ticket note.
   - **Phone 2:** the quick reply **"Will I make my connection?"**: an honest "can't say yet", with concrete backups. Say: "the chat tells you what SBB knows; Your trip shows our backup plan."
   - **Phone 3:** the quick reply **"What happened?"**: the cause from the published update.
