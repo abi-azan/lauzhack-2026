@@ -7,6 +7,9 @@ What the official SBB Mobile app shows a traveller before and during a disruptio
 
 The 64 screenshots are in [`img/`](img/), and an index is at the bottom of this page.
 
+> [!NOTE]
+> The screenshots are screenshots of SBB's own app, so they're not in this public copy. The findings below stand on their own; the image links won't open here.
+
 | | |
 |---|---|
 | **App** | SBB Mobile 12.60 (`ch.sbb.mobile.android.b2c`), credited "powered by ubique" |
