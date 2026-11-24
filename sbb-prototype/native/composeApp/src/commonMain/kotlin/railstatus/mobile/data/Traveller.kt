@@ -6,5 +6,5 @@ package railstatus.mobile.data
  */
 object DemoTraveller {
     const val NAME = "Max Muster"
-    const val EMAIL = "christian.trachsel@example.ch"
+    const val EMAIL = "max.muster@example.ch"
 }
