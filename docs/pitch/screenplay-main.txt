@@ -129,7 +129,7 @@ IF SOMETHING BREAKS
 LIKELY JURY QUESTIONS
 ---------------------
 
-- "How does the phone know which train I'm on?": "Each car has a Bluetooth beacon that sends its name. The app listens in the background about every 20 seconds, takes the strongest signal, and checks you in to that train and car: no tap, no login. Or scan the QR code in the car, like EasyRide. On stage the beacon is simulated; the scanning is real."
+- "How does the phone know which train I'm on?": "Each car has a Bluetooth beacon that sends its name. While the screen is on, the app listens about every 20 seconds, takes the strongest signal, and checks you in to that train and car: no tap, no login. Or scan the QR code in the car, like EasyRide. On stage the beacon is simulated; the scanning is real."
 - "What if the AI is wrong?": "The AI only drafts, and a human publishes. The chat model only gets SBB's published facts and the journey planner's results, it's told never to invent times, and if both our models fail, it says sorry rather than guess."
 - "Is this real data?": "The 17 September messages are SBB's own logs, replayed. The alternative routes come live from the Swiss journey planner (OJP)."
 - "Would SBB have to replace anything?": "No. It sits between the ticker the control centre already writes and the channels SBB already uses."

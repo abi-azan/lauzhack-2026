@@ -55,7 +55,7 @@ PRESENTER:
 
 PRESENTER (to JUDGES 1 and 2):
     "First: how does your phone know you're on this train? You didn't tap anything.
-    Every car has a small Bluetooth beacon that sends out its name, like 'IR90-1734-Car7'. The app listens in the background, about every 20 seconds, for a few seconds at a time, and takes the strongest signal. That's the car you're sitting in. It checks you in to that train and car.
+    Every car has a small Bluetooth beacon that sends out its name, like 'IR90-1734-Car7'. Whenever your screen is on, the app listens for a few seconds about every 20 seconds, and takes the strongest signal. That's the car you're sitting in. It checks you in to that train and car.
     It sends only the train, the car, your language and where you're going. No name, no login. If it ever picks the wrong train, 'Not on this train?' undoes it. No beacon in the car? Scan the QR code on the wall, like EasyRide today."
 
 PRESENTER (to JUDGE 3):
@@ -213,7 +213,7 @@ LIKELY QUESTIONS
 ----------------
 
 - "What if two trains are next to each other in the station?": "The app takes the strongest beacon, and checks again every 20 seconds, so it settles on the train you're in. If it's still wrong, 'Not on this train?' undoes it and pauses automatic check-in for 10 minutes."
-- "Does it drain the battery?": "It scans a few seconds at a time, about every 20 seconds, with Android's own Bluetooth scanner. We haven't measured battery use on a full journey."
+- "Does it drain the battery?": "It scans a few seconds at a time, about every 20 seconds, and only while the screen is on, with Android's own Bluetooth scanner. We haven't measured battery use on a full journey."
 - "What does SBB need to install?": "A beacon per car, or just the QR code that EasyRide cars already have. The rest is software."
 - "What if the AI draft is wrong?": "It's a draft. A human checks and publishes every word. The passenger's advice is computed from the published facts and the real timetable, not written by the AI."
 - "Does the AI see personal data?": "No. Staff names, phone numbers and IDs are removed before the ticker leaves our server, and the draft is checked again on the way out. From the chat, the AI sees only topics and counts, never what a passenger typed."
@@ -227,6 +227,8 @@ DON'T CLAIM
 
 - That the beacon on stage is real. It's simulated; the scanning code is real.
 - Battery numbers. We haven't measured them.
+- That it checks you in with the screen off. Android delivers no unfiltered scan results then; the check-in happens the next time the screen is on.
+- That real Bluetooth check-in is proven. We have only tested it with the simulated beacon.
 - That the chat falls back to rules. Since 83b02af it says sorry instead.
 - That the chat "never makes things up". It's told never to invent a time; it has no separate fact check.
 - That the advice on Your trip is AI. It's computed, not generated.
